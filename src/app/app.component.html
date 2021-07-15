@@ -1,0 +1,15 @@
+<mat-drawer-container class="app-module">
+  <mat-drawer mode="side" opened class="sidenav"> 
+    <a href="add">Add Employee</a>
+    <a href="display">Display Employee</a>  
+  </mat-drawer>
+    <mat-drawer-content  *ngIf="url == 'http://localhost:4200/'" >
+      <app-add-employee></app-add-employee>
+    </mat-drawer-content>
+    <mat-drawer-content  *ngIf="url != 'http://localhost:4200/'">
+      <router-outlet></router-outlet>
+    </mat-drawer-content> 
+</mat-drawer-container>
+
+
+

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,YAAY,EAAE,GAAG;CAWlB;;AAZD,AAEE,IAFE,CAEF,KAAK,CAAC;EACJ,aAAa,EAAE,IAAI;CACpB;;AAJH,AAKE,IALE,CAKF,MAAM,CAAC;EACL,UAAU,EAAE,IAAI;EAChB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,GAAG;EACX,WAAW,EAAE,IAAI;EACjB,MAAM,EAAE,SAAU;CACnB",
+    "sources": [
+        "add-employee.component.scss"
+    ],
+    "names": [],
+    "file": "add-employee.component.css"
+}
