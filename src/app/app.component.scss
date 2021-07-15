@@ -2,8 +2,7 @@
   height: 100vh;
   padding:0;
   margin:0;
-  //display:unset;
-}
+
   .sidenav {
    margin-right: 30px;
    margin:0;
@@ -11,6 +10,7 @@
     background-color: lighten($color: #000000, $amount: 0);
     padding-top: 20px;
   }
+
   .sidenav a {
     padding: 15px ;
     text-decoration: none;
@@ -18,16 +18,10 @@
     color: #818181;
     display: block;
   }
+
   .sidenav a:hover {
     color: #f1f1f1;
   }
-
-  .right {
-    //padding-left: 50px;
-    //margin-left: 230;
-    flex: 1 1 auto;
-
-    //margin-left: 60px;
-  }
+}
 
 

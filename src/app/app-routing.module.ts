@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AddEmployeeComponent} from './add-employee/add-employee.component';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
-import { NotificationComponent } from './notification/notification.component';
 
 
 const routes: Routes = [

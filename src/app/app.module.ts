@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule} from 'ngx-toastr';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
@@ -10,21 +10,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {  MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { CdkTableModule} from '@angular/cdk/table';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { NotificationComponent } from './notification/notification.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 //import {MatPaginatorModule } from '@angular/material/paginator';
-
+import { ToastrModule} from 'ngx-toastr';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEmployeeComponent,
-    DisplayEmployeeComponent,
-    NotificationComponent
+    DisplayEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +37,12 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
     MatInputModule,
     CdkTableModule,
     MatTableModule,
-    //NgbPaginationModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ timeOut: 3500,
+      positionClass:'toast-top-right',  
+      closeButton: true,
+      preventDuplicates: true,}),
     MatSnackBarModule,
     NgbModule,
-    //MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
