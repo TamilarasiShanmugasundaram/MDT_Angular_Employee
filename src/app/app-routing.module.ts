@@ -6,6 +6,7 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
 
 const routes: Routes = [
   {path:'add',component:AddEmployeeComponent},
+  {path:'add/:id',component:AddEmployeeComponent},
   {path:'display',component:DisplayEmployeeComponent}
   
 ];

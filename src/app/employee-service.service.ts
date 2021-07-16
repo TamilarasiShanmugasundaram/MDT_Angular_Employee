@@ -21,12 +21,26 @@ export class EmployeeServiceService {
             phonenumber: phonenumber, created_at: created_at, updated_at: updated_at,
       is_deleted: is_deleted}).subscribe((response: object) => {
         if(null != response) {
-          this.toastr.success(name + ' added successfully', 'Notification');
+          this.toastr.success(name + ' added successfully', 'Success');
           this.router.navigate(['/display']);
         } 
       });
     }
 
+  /**
+   * To add employee data
+   * 
+   * @param contains name, address, phonenumber, created_at, updated_at, is_deleted 
+   */
+  deleteEmployee(id: any) {
+    this.http.post('http://localhost:3330/employee/' + id, {id: id}).subscribe((response: object) => {
+      if(null != response) {
+        this.toastr.success(' Deleted successfully', 'Success');
+        this.getEmployee();
+        //this.router.navigate(['/display']);
+      } 
+    });
+  }
   /**
    * To get employee data
    */ 
@@ -47,8 +61,15 @@ export class EmployeeServiceService {
       if(phonenumber == response) {
         this.addEmployee(name, address, phonenumber, created_at, updated_at, is_deleted);
       } else {
-        this.toastr.error(response , 'Notification');
+        this.toastr.error(response , 'Error');
       }
     });
+  }
+
+  /**
+   * To update employee
+   */ 
+  updateEmployee(id: any) {
+
   }
 }

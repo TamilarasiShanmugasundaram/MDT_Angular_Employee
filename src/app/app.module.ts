@@ -13,18 +13,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CdkTableModule} from '@angular/cdk/table';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-//import {MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon'
 import { ToastrModule} from 'ngx-toastr';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
 import { DatePipe } from '@angular/common';
-
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import { DialogEmployeeComponent } from './dialog-employee/dialog-employee.component';
 @NgModule({
   declarations: [
     AppComponent,
     AddEmployeeComponent,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    DialogEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +44,8 @@ import { DatePipe } from '@angular/common';
       preventDuplicates: true,}),
     MatSnackBarModule,
     NgbModule,
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

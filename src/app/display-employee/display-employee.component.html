@@ -16,9 +16,19 @@
     <th mat-header-cell *matHeaderCellDef> Phone number </th>
     <td mat-cell *matCellDef="let employee"> {{employee.phone_number}} </td>
   </ng-container>
-  <tr mat-header-row *matHeaderRowDef=" ['id', 'name', 'address', 'phone_number']"></tr>
-  <tr mat-row  *matRowDef="let row; columns:  ['id', 'name', 'address', 'phone_number'];"></tr>
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef>  Action </th>
+    <td mat-cell *matCellDef="let employee">
+      <i (click)="edit(employee.id)" class="material-icons blue">edit</i>
+      <i (click)="delete(employee.id)" class="material-icons">delete</i> 
+    </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef=" ['id', 'name', 'address', 'phone_number', 'Action']"></tr>
+  <tr mat-row  *matRowDef="let row; columns:  ['id', 'name', 'address', 'phone_number', 'Action'];"></tr>    
 </table>
 
-<ngb-pagination (pageChange)="onPaginationClick($event)" class="pagination" [pageSize]="pageSize" 
-  [collectionSize]="collectionSize" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+<ngb-pagination (pageChange)="onPaginationClick($event)" class="pagination" 
+  [collectionSize]="collectionSize" [(page)]="page" [boundaryLinks]="true">
+  <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+</ngb-pagination>
