@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
@@ -46,6 +45,7 @@ import { DialogEmployeeComponent } from './dialog-employee/dialog-employee.compo
     NgbModule,
     MatIconModule,
     MatDialogModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

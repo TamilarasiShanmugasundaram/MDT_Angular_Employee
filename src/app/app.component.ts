@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'angularMedtronic';
   url: string = '';
-  myDate: any = new Date();
+  
   constructor(private router: Router){ }
 
   /**

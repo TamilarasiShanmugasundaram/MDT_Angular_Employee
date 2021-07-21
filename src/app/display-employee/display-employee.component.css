@@ -20,7 +20,7 @@ tr:nth-child(even) {
 
 .pagination {
   margin-top: 15px;
-  margin-left: 35%;
+  margin-left: 50%;
 }
 
 .material-icons {
@@ -30,6 +30,10 @@ tr:nth-child(even) {
 
 .blue {
   color: #6565db;
+}
+
+i {
+  cursor: pointer;
 }
 
 h1 {

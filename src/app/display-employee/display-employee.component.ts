@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeServiceService } from '../employee-service.service';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog"; 
-import { DialogEmployeeComponent } from '../dialog-employee/dialog-employee.component';
 import { Router } from '@angular/router';
+
+import { DialogEmployeeComponent } from '../dialog-employee/dialog-employee.component';
+
 @Component({
   selector: 'app-display-employee',
   templateUrl: './display-employee.component.html',
@@ -11,77 +13,69 @@ import { Router } from '@angular/router';
 })
 export class DisplayEmployeeComponent implements OnInit {
 
+  employees: any = [];
+  page = 1;
+  total_count: any;
+
   constructor(private http: HttpClient, private employee_service: EmployeeServiceService,
     private dialog: MatDialog, private router: Router) { }
-  employees: any = [];
-  first_ten_employees:any = [];
-  page = 1;
-  pageSize = 10;
-  length = 0;
-  collectionSize = 0;
-  limit = 0;
 
   /**
    * To get employee data when page load
    */
   ngOnInit(): void {
-    this.fetchEmployees();
+    this.fetchEmployees(this.page);
   }
 
   /**
    * To get employee data
+   * 
+   * @param page contains page number
    */
-  fetchEmployees(): void {
-    // this.employees  = this.employee_service.getEmployee();
-    // this.length = Object.keys(this.employees).length;
-    // alert( this.length)
-    this.http.get('http://localhost:3330/employee').subscribe(data => {
+  fetchEmployees(page: any): void {
+    this.employee_service.getEmployee(page).subscribe(data => {
       this.employees = data;
-      this.length = Object.keys(this.employees).length;
-      this.collectionSize = this.length;
-      if(10 < this.length) {
-        for(let i = 0; i < 10; i++) {
-          this.first_ten_employees[i] = this.employees[i];
-        }
-        this.employees = this.first_ten_employees;
-      }  
-    },
-    err => {
+      this.total_count = data[0].total_rows;
+    }, err => {  
       console.log("Error occured." + err);
     });
   }
   
   /**
    * To get employee data for particular page when click on page number
+   * 
+   * @param event contains page number
    */
   onPaginationClick(event:any): void {
-    if(1 == event) {
-      this.fetchEmployees();
-    } else {
-      this.limit = (event-1)*10;
-      this.http.get('http://localhost:3330/employee/' + this.limit).subscribe(data => {
-        this.employees = data;
-        this.length = Object.keys(data).length;
-      },
-      err => {
-        console.log("Error occured." + err);
-      });
-    }  
+    console.log('on click '+ event)
+    this.fetchEmployees(event);
   }
 
-  delete(id: any) {
-    const dialogRef = this.dialog.open(DialogEmployeeComponent);
+  /**
+   * To delete employee data
+   *  
+   * @param id contains employee id
+   * @param name contains employee name
+   */
+  delete(id: any, name: any) {
+    const dialogRef = this.dialog.open(DialogEmployeeComponent,{
+      disableClose: true,
+      data:{'name': name}
+    });
     dialogRef.afterClosed().subscribe(result => {
       if(true == result) {
-        alert(id)
-        this.employee_service.deleteEmployee(id);
-        this.fetchEmployees();
+        this.employee_service.deleteEmployee(id, name);
+        this.fetchEmployees(this.page);
       }
     });
   }
 
+  /**
+   * To delete employee data 
+   * 
+   * @param id contains employee id
+   */
   edit(id: any) {
-    alert('id'+ id);
-    this.router.navigate(['/add/' + id]);
+    this.router.navigate(['/edit/' + id]);
   }
 }
