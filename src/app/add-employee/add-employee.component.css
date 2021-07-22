@@ -19,4 +19,8 @@ h1 {
   font-weight: bold;
   font-size: 25px;
 }
+
+.input-field {
+  margin-bottom: 5px;
+}
 /*# sourceMappingURL=add-employee.component.css.map */

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { NgForm } from '@angular/forms';
-import {formatDate } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Constants } from '../constants';
 
 import { EmployeeServiceService } from '../employee-service.service';
 
@@ -11,43 +10,31 @@ import { EmployeeServiceService } from '../employee-service.service';
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.scss'],
-  providers: [DatePipe]
+  providers: []
 })
 export class AddEmployeeComponent implements OnInit {
 
   name: string = '';
   address: string = '';
   phonenumber: string = '';
-  updated_at: any;
-  created_at: any;
-  is_deleted:boolean =  false;
-  // today= new Date();
-  // todaysDataTime = '';
-  url: string = '';
-  routeSub: any;
   id: any;
   employees: any;
-  employee: any;
+  url:any = '';
 
   constructor(private employee_service: EmployeeServiceService, private route: ActivatedRoute, 
-    private http: HttpClient) { }
+    private toastr: ToastrService, private router: Router) { }
+
   ngOnInit(): void {
-    this.url = window.location.href;
-    if('http://localhost:4200/add' != this.url) {
-    this.routeSub = this.route.params.subscribe(params => {
-      this.id = params['id']; 
-      this.employees  = this.employee_service.getEmployeeById(this.id).subscribe(data => {
-        this.employees = data;
-        for(let i = 0; i < 1; i++) {
-          this.employee = this.employees[i];
-          this.name = this.employee.name;
-          this.address = this.employee.address;
-          this.phonenumber = this.employee.phone_number;
-        }
+    this.url = this.router.url;
+    if('/add' != this.router.url) {
+      this.id = this.route.snapshot.paramMap.get(Constants.ID);
+      this.employee_service.getEmployeeById(this.id).subscribe(data => {
+        this.name = data.name;
+        this.address = data.address;
+        this.phonenumber = data.phonenumber;
       }, err => {  
-        console.log("Error occured." + err);
+        console.log(err);
       });
-     });
     }
   }
 
@@ -57,21 +44,30 @@ export class AddEmployeeComponent implements OnInit {
    * @param form contains name, address, phone_number
    */
   onSubmit(form: NgForm) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    let name = form.controls['name'].value;
-    let address = form.controls['address'].value;
-    let phone_number = form.controls['phonenumber'].value;
-    //this.todaysDataTime = formatDate(this.today, 'yyyy-MM-dd hh:mm:ss', 'en-US', '+0530');
+    this.id = this.route.snapshot.paramMap.get(Constants.ID);
+    let name = form.controls[Constants.NAME].value;
+    let address = form.controls[Constants.ADDRESS].value;
+    let phone_number = form.controls[Constants.PHONENUMBER].value;
     if(null != this.id) {
-      this.employee_service.isEmployeeExists(this.id, name, address,
-        phone_number, this.is_deleted);
-    } else {
-      this.employee_service.isEmployeeExists(0, name, address,
-        phone_number, this.is_deleted);
+      this.employee_service.isEmployeeExists(this.id, name, address, phone_number).subscribe(data => {
+        if(data.message) {
+          this.employee_service.updateEmployee(this.id, name, address, phone_number);
+        } else {
+          this.toastr.error(phone_number + Constants.ALREADY_EXISTS, Constants.ERROR);
+        }
+      }, err => {  
+        console.log(err);
+      });
+    } else {        
+      this.employee_service.isEmployeeExists(null, name, address, phone_number).subscribe(data => {
+        if(data.message) {
+          this.employee_service.addEmployee(name, address, phone_number);
+        } else {
+          this.toastr.error(phone_number + Constants.ALREADY_EXISTS, Constants.ERROR);
+        }
+      }, err => {  
+        console.log(err);
+      });
     }  
-    this.url = window.location.href;
-    if('http://localhost:4200/add' == this.url) {
-      form.resetForm();  
-    } 
   }  
 }

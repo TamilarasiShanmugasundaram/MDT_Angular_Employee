@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,MAAM,CAAC;EACL,MAAM,EAAE,SAAU;EAClB,YAAY,EAAE,IAAI;CACnB",
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACL,MAAM,EAAE,SAAU;EAClB,YAAY,EAAE,IAAI;EAClB,MAAM,EAAE,GAAG;CACZ",
     "sources": [
         "dialog-employee.component.scss"
     ],

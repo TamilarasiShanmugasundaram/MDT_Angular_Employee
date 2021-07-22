@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { Constants } from './constants';
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +16,20 @@ export class EmployeeServiceService {
    * To get all employee data
    * 
    * @param page contains page number
+   * return all employees
    */ 
-  getEmployee(page: number): Observable<any> {
-    return this.http.get('http://localhost:3330/employee?page=' + page + '&limit=' + 10);
+  getEmployees(page: number): Observable<any> {
+    return this.http.get(Constants.LOCALHOST + 'employee?page=' + page + '&limit=' + 10);
   }
    
   /**
    * To get particular employee data
    * 
    * @param id contains employee id
+   * return particular employee
    */ 
   getEmployeeById(id: any): Observable<any> {
-    return this.http.get('http://localhost:3330/employee/' + id);
+    return this.http.get(Constants.LOCALHOST + 'employee/' + id);
   }
 
   /**
@@ -34,14 +37,13 @@ export class EmployeeServiceService {
    * 
    * @param contains name, address, phonenumber, created_at, updated_at, is_deleted 
    */
-  addEmployee(name: any, address: any, phonenumber: any, is_deleted: any) {
-    this.http.post('http://localhost:3330/employee', {name: name, address: address, 
-      phonenumber: phonenumber, is_deleted: is_deleted}).subscribe((response: any) => {
+  addEmployee(name: any, address: any, phonenumber: any) {
+    this.http.post(Constants.LOCALHOST + 'employee', {name: name, address: address, 
+      phonenumber: phonenumber, is_deleted: false}).subscribe((response: any) => {
       if(response.error) {
-        this.toastr.error(response.error, 'Error');
+        this.toastr.error(response.error, Constants.ERROR);
       } else {
-        console.log(response.message)
-        this.toastr.success(response.message, 'Success');
+        this.toastr.success(response.message, Constants.SUCCESS);
         this.router.navigate(['/display']);
       }
     });
@@ -52,14 +54,14 @@ export class EmployeeServiceService {
    * 
    * @param contains id, name, address, phonenumber, created_at, updated_at, is_deleted  
    */ 
-  updateEmployee(id: any, name: any, address: any, phonenumber: any, is_deleted: any) {
-    this.http.put('http://localhost:3330/employee/' + id, {id: id, name: name, address: address, 
-      phonenumber: phonenumber, is_deleted: is_deleted}).subscribe((response: any) => {
+  updateEmployee(id: any, name: any, address: any, phonenumber: any) {
+    this.http.put(Constants.LOCALHOST + 'employee/' + id, {id: id, name: name, address: address, 
+      phonenumber: phonenumber, is_deleted: false}).subscribe((response: any) => {
       if(response.error) {
-        this.toastr.error(response.error, 'Error');
+        this.toastr.error(response.error, Constants.ERROR);
       } else {
         console.log(response.message)
-        this.toastr.success(response.message, 'Success');
+        this.toastr.success(response.message, Constants.SUCCESS);
         this.router.navigate(['/display']);
       }
     });
@@ -71,11 +73,11 @@ export class EmployeeServiceService {
    * @param contains id, name
    */
   deleteEmployee(id: any, name: any) {
-    this.http.post('http://localhost:3330/employee/' + id, {id: id}).subscribe((response: any) => {
+    this.http.post(Constants.LOCALHOST + 'employee/' + id, {id: id}).subscribe((response: any) => {
       if(response.error) {
-        this.toastr.error(response.error, 'Error');
+        this.toastr.error(response.error, Constants.ERROR);
       } else {
-        this.toastr.success(name + response.message, 'Success');
+        this.toastr.success(name + response.message, Constants.SUCCESS);
       }
     });
   }
@@ -86,16 +88,7 @@ export class EmployeeServiceService {
    * 
    * * @param contains name, address, phonenumber, created_at, updated_at, is_deleted 
    */ 
-  isEmployeeExists(id: any, name: any, address: any, phone_number: any, is_deleted: any) {
-    this.http.post('http://localhost:3330/isEmployeeExist', {phonenumber: phone_number, id: id}).subscribe((response: any) => {
-      console.log(response.message)
-      if(response.message == 'add') { 
-        this.addEmployee(name, address, phone_number, is_deleted);
-      } else if(response.message == 'update') {
-        this.updateEmployee(id, name, address, phone_number, is_deleted);
-      } else {
-        this.toastr.error(response.message , 'Error');
-      }
-    });
+  isEmployeeExists(id: any, name: any, address: any, phone_number: any): Observable<any>  {
+    return this.http.post(Constants.LOCALHOST + 'isEmployeeExist', {phonenumber: phone_number, id: id});
   }
 }

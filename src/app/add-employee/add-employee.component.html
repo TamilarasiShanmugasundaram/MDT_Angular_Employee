@@ -1,59 +1,78 @@
-<h1  *ngIf = "url == 'http://localhost:4200/add' || url == 'http://localhost:4200/'">Add Employee</h1>
-<h1  *ngIf = "url != 'http://localhost:4200/add' && url != 'http://localhost:4200/'">Edit Employee</h1>
+<h1  *ngIf = "url == '/add' || url == '/'">Add Employee</h1>
+<h1  *ngIf = "url != '/add' && url != '/'">Edit Employee</h1>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class="add">
-    <mat-form-field>
-      <input type="text" matInput placeholder="Name" name="name" required pattern="[A-Za-z]{1,32}" 
-              [(ngModel)]="name" #Name="ngModel" minlength="2" maxlength="50"><br>
-      <mat-error *ngIf="Name.invalid && (Name.dirty || Name.touched)">
-        <mat-error *ngIf="Name.errors?.required">
-          Name is required.
+    <div class="input-field">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput  name="name" required pattern="[A-Za-z]{1,32}" 
+                [(ngModel)]="name" #Name="ngModel" minlength="2" maxlength="50"><br>
+                <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+        <mat-error *ngIf="Name.invalid && (Name.dirty || Name.touched)">
+          <mat-error *ngIf="Name.errors?.required">
+            Name is required.
+          </mat-error>
+          <mat-error *ngIf="Name.errors?.minlength">
+            Name must be at least 2 characters long.
+          </mat-error>
+          <mat-error *ngIf="Name.errors?.maxlength">
+            Name cannot exists 50 characters
+          </mat-error>
+          <mat-error *ngIf="Name.errors?.pattern">  
+            Name must contain characters only
+          </mat-error> 
         </mat-error>
-        <mat-error *ngIf="Name.errors?.minlength">
-          Name must be at least 2 characters long.
+      </mat-form-field><br>
+    </div>
+   
+    <div class="input-field">
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <textarea matInput  name="address"  required rows="1" 
+                [(ngModel)]="address" #Address="ngModel" minlength="2" maxlength="200"></textarea>
+                <button *ngIf="address" matSuffix mat-icon-button aria-label="Clear" (click)="address=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+        <mat-error *ngIf="Address.invalid && (Address.dirty || Address.touched)">
+          <mat-error *ngIf="Address.errors?.required">
+            Address is required.
+          </mat-error>
+          <mat-error *ngIf="Address.errors?.minlength">
+            Address must be at least 2 characters long.
+          </mat-error>
+          <mat-error *ngIf="Address.errors?.maxlength">
+            Address cannot exists 200 characters
+          </mat-error>
         </mat-error>
-        <mat-error *ngIf="Name.errors?.maxlength">
-          Name cannot exists 50 characters
+      </mat-form-field><br>
+    </div>
+    
+    <div class="input-field">
+      <mat-form-field>
+        <mat-label>Phonenumber</mat-label>
+        <input type="text" matInput name="phonenumber"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                [(ngModel)]="phonenumber" #Phonenumber="ngModel" minlength="10" maxlength="10">
+                <button *ngIf="phonenumber" matSuffix mat-icon-button aria-label="Clear" (click)="phonenumber=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+        <mat-error *ngIf="Phonenumber.invalid && (Phonenumber.dirty || Phonenumber.touched)">
+          <mat-error *ngIf="Phonenumber.errors?.required">
+            Phonenumber is required.
+          </mat-error>
+          <mat-error *ngIf="Phonenumber.errors?.maxlength">
+            Phonenumber cannot exists 10 characters
+          </mat-error>
+          <mat-error *ngIf="Phonenumber.errors?.pattern" >  
+            Phonenumber is not valid.  
+          </mat-error> 
         </mat-error>
-        <mat-error *ngIf="Name.errors?.pattern">  
-          Name must contain characters only
-        </mat-error> 
-      </mat-error>
-    </mat-form-field><br>
-
-    <mat-form-field>
-      <textarea matInput placeholder="Address" name="address"  required rows="1" 
-              [(ngModel)]="address" #Address="ngModel" minlength="2" maxlength="200"></textarea>
-      <mat-error *ngIf="Address.invalid && (Address.dirty || Address.touched)">
-        <mat-error *ngIf="Address.errors?.required">
-          Address is required.
-        </mat-error>
-        <mat-error *ngIf="Address.errors?.minlength">
-          Address must be at least 2 characters long.
-        </mat-error>
-        <mat-error *ngIf="Address.errors?.maxlength">
-          Address cannot exists 200 characters
-        </mat-error>
-      </mat-error>
-    </mat-form-field><br>
-
-    <mat-form-field>
-      <input type="text" matInput placeholder="Phonenumber" name="phonenumber"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
-              [(ngModel)]="phonenumber" #Phonenumber="ngModel" minlength="10" maxlength="10">
-      <mat-error *ngIf="Phonenumber.invalid && (Phonenumber.dirty || Phonenumber.touched)">
-        <mat-error *ngIf="Phonenumber.errors?.required">
-          Phonenumber is required.
-        </mat-error>
-        <mat-error *ngIf="Phonenumber.errors?.maxlength">
-          Phonenumber cannot exists 10 characters
-        </mat-error>
-        <mat-error *ngIf="Phonenumber.errors?.pattern" >  
-          Phonenumber is not valid.  
-        </mat-error> 
-      </mat-error>
-    </mat-form-field><br>
-    <button mat-raised-button *ngIf = "url == 'http://localhost:4200/add'" [disabled]="!f.valid" color="primary">Submit</button>
-    <button mat-raised-button *ngIf = "url != 'http://localhost:4200/add'" [disabled]="!f.dirty" color="primary">Submit</button>
+      </mat-form-field><br>
+    </div>
+    
+    <button mat-raised-button *ngIf = "url == '/add'" [disabled]="!f.valid" color="primary">Submit</button>
+    <button mat-raised-button *ngIf = "url != '/add'" [disabled]="!(f.valid) || (!f.dirty)"   color="primary">Submit</button>
   </div>
 </form>
 

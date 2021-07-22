@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { EmployeeServiceService } from '../employee-service.service';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog"; 
 import { Router } from '@angular/router';
+import { Constants } from '../constants';
 
 import { DialogEmployeeComponent } from '../dialog-employee/dialog-employee.component';
+
 
 @Component({
   selector: 'app-display-employee',
@@ -17,7 +18,7 @@ export class DisplayEmployeeComponent implements OnInit {
   page = 1;
   total_count: any;
 
-  constructor(private http: HttpClient, private employee_service: EmployeeServiceService,
+  constructor(private employee_service: EmployeeServiceService,
     private dialog: MatDialog, private router: Router) { }
 
   /**
@@ -33,11 +34,11 @@ export class DisplayEmployeeComponent implements OnInit {
    * @param page contains page number
    */
   fetchEmployees(page: any): void {
-    this.employee_service.getEmployee(page).subscribe(data => {
+    this.employee_service.getEmployees(page).subscribe(data => {
       this.employees = data;
       this.total_count = data[0].total_rows;
     }, err => {  
-      console.log("Error occured." + err);
+      console.log(err);
     });
   }
   
@@ -46,8 +47,7 @@ export class DisplayEmployeeComponent implements OnInit {
    * 
    * @param event contains page number
    */
-  onPaginationClick(event:any): void {
-    console.log('on click '+ event)
+  onPaginationClick(event: any): void {
     this.fetchEmployees(event);
   }
 
@@ -57,10 +57,10 @@ export class DisplayEmployeeComponent implements OnInit {
    * @param id contains employee id
    * @param name contains employee name
    */
-  delete(id: any, name: any) {
+  deleteEmployee(id: any, name: any) {
     const dialogRef = this.dialog.open(DialogEmployeeComponent,{
       disableClose: true,
-      data:{'name': name}
+      data:{name: name}
     });
     dialogRef.afterClosed().subscribe(result => {
       if(true == result) {
@@ -75,7 +75,7 @@ export class DisplayEmployeeComponent implements OnInit {
    * 
    * @param id contains employee id
    */
-  edit(id: any) {
+  navigateToEdit(id: any) {
     this.router.navigate(['/edit/' + id]);
   }
 }
