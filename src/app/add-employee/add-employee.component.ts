@@ -47,23 +47,23 @@ export class AddEmployeeComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get(Constants.ID);
     let name = form.controls[Constants.NAME].value;
     let address = form.controls[Constants.ADDRESS].value;
-    let phone_number = form.controls[Constants.PHONENUMBER].value;
-    if(null != this.id) {
-      this.employee_service.isEmployeeExists(this.id, name, address, phone_number).subscribe(data => {
-        if(data.message) {
-          this.employee_service.updateEmployee(this.id, name, address, phone_number);
+    let phonenumber = form.controls[Constants.PHONENUMBER].value;
+    if(this.id) {
+      this.employee_service.isEmployeeExists(this.id, name, address, phonenumber).subscribe(data => {
+        if(data) {
+          this.employee_service.updateEmployee(this.id, name, address, phonenumber);
         } else {
-          this.toastr.error(phone_number + Constants.ALREADY_EXISTS, Constants.ERROR);
+          this.toastr.error(phonenumber + Constants.ALREADY_EXISTS, Constants.ERROR);
         }
       }, err => {  
         console.log(err);
       });
     } else {        
-      this.employee_service.isEmployeeExists(null, name, address, phone_number).subscribe(data => {
-        if(data.message) {
-          this.employee_service.addEmployee(name, address, phone_number);
+      this.employee_service.isEmployeeExists(null, name, address, phonenumber).subscribe(data => {
+        if(data) {
+          this.employee_service.addEmployee(name, address, phonenumber);
         } else {
-          this.toastr.error(phone_number + Constants.ALREADY_EXISTS, Constants.ERROR);
+          this.toastr.error(phonenumber + Constants.ALREADY_EXISTS, Constants.ERROR);
         }
       }, err => {  
         console.log(err);

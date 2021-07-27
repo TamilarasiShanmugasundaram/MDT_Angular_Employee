@@ -35,8 +35,8 @@ export class DisplayEmployeeComponent implements OnInit {
    */
   fetchEmployees(page: any): void {
     this.employee_service.getEmployees(page).subscribe(data => {
-      this.employees = data;
-      this.total_count = data[0].total_rows;
+      this.employees = data.rows;
+      this.total_count = data.count;
     }, err => {  
       console.log(err);
     });

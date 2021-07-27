@@ -39,7 +39,7 @@ export class EmployeeServiceService {
    */
   addEmployee(name: any, address: any, phonenumber: any) {
     this.http.post(Constants.LOCALHOST + 'employee', {name: name, address: address, 
-      phonenumber: phonenumber, is_deleted: false}).subscribe((response: any) => {
+      phonenumber: phonenumber}).subscribe((response: any) => {
       if(response.error) {
         this.toastr.error(response.error, Constants.ERROR);
       } else {
