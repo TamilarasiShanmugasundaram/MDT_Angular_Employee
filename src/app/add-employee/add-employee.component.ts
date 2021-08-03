@@ -16,7 +16,7 @@ export class AddEmployeeComponent implements OnInit {
 
   name: string = '';
   address: string = '';
-  phonenumber: string = '';
+  phone_number: string = '';
   id: any;
   employees: any;
   url:any = '';
@@ -28,13 +28,15 @@ export class AddEmployeeComponent implements OnInit {
     this.url = this.router.url;
     if('/add' != this.router.url) {
       this.id = this.route.snapshot.paramMap.get(Constants.ID);
-      this.employee_service.getEmployeeById(this.id).subscribe(data => {
-        this.name = data.name;
-        this.address = data.address;
-        this.phonenumber = data.phonenumber;
-      }, err => {  
-        console.log(err);
-      });
+      if(this.id) {
+        this.employee_service.getEmployeeById(this.id).subscribe(data => {
+          this.name = data.name;
+          this.address = data.address;
+          this.phone_number = data.phone_number;
+        }, err => {  
+          console.log(err);
+        });
+      }
     }
   }
 
@@ -47,27 +49,11 @@ export class AddEmployeeComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get(Constants.ID);
     let name = form.controls[Constants.NAME].value;
     let address = form.controls[Constants.ADDRESS].value;
-    let phonenumber = form.controls[Constants.PHONENUMBER].value;
+    let phone_number = form.controls[Constants.PHONENUMBER].value;
     if(this.id) {
-      this.employee_service.isEmployeeExists(this.id, name, address, phonenumber).subscribe(data => {
-        if(data) {
-          this.employee_service.updateEmployee(this.id, name, address, phonenumber);
-        } else {
-          this.toastr.error(phonenumber + Constants.ALREADY_EXISTS, Constants.ERROR);
-        }
-      }, err => {  
-        console.log(err);
-      });
+      this.employee_service.updateEmployee(this.id, name, address, phone_number);
     } else {        
-      this.employee_service.isEmployeeExists(null, name, address, phonenumber).subscribe(data => {
-        if(data) {
-          this.employee_service.addEmployee(name, address, phonenumber);
-        } else {
-          this.toastr.error(phonenumber + Constants.ALREADY_EXISTS, Constants.ERROR);
-        }
-      }, err => {  
-        console.log(err);
-      });
+      this.employee_service.addEmployee(name, address, phone_number);
     }  
   }  
 }

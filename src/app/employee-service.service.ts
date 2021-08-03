@@ -37,9 +37,9 @@ export class EmployeeServiceService {
    * 
    * @param contains name, address, phonenumber, created_at, updated_at, is_deleted 
    */
-  addEmployee(name: any, address: any, phonenumber: any) {
+  addEmployee(name: any, address: any, phone_number: any) {
     this.http.post(Constants.LOCALHOST + 'employee', {name: name, address: address, 
-      phonenumber: phonenumber}).subscribe((response: any) => {
+      phone_number: phone_number}).subscribe((response: any) => {
       if(response.error) {
         this.toastr.error(response.error, Constants.ERROR);
       } else {
@@ -54,9 +54,9 @@ export class EmployeeServiceService {
    * 
    * @param contains id, name, address, phonenumber, created_at, updated_at, is_deleted  
    */ 
-  updateEmployee(id: any, name: any, address: any, phonenumber: any) {
+  updateEmployee(id: any, name: any, address: any, phone_number: any) {
     this.http.put(Constants.LOCALHOST + 'employee/' + id, {id: id, name: name, address: address, 
-      phonenumber: phonenumber, is_deleted: false}).subscribe((response: any) => {
+      phone_number: phone_number, is_deleted: false}).subscribe((response: any) => {
       if(response.error) {
         this.toastr.error(response.error, Constants.ERROR);
       } else {
@@ -80,15 +80,5 @@ export class EmployeeServiceService {
         this.toastr.success(name + response.message, Constants.SUCCESS);
       }
     });
-  }
-
-
-  /**
-   * To check employee exists or not
-   * 
-   * * @param contains name, address, phonenumber, created_at, updated_at, is_deleted 
-   */ 
-  isEmployeeExists(id: any, name: any, address: any, phone_number: any): Observable<any>  {
-    return this.http.post(Constants.LOCALHOST + 'isEmployeeExist', {phonenumber: phone_number, id: id});
   }
 }

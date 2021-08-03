@@ -52,19 +52,19 @@
     <div class="input-field">
       <mat-form-field>
         <mat-label>Phonenumber</mat-label>
-        <input type="text" matInput name="phonenumber"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
-                [(ngModel)]="phonenumber" #Phonenumber="ngModel" minlength="10" maxlength="10">
-                <button *ngIf="phonenumber" matSuffix mat-icon-button aria-label="Clear" (click)="phonenumber=''">
+        <input type="text" matInput name="phone_number"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                [(ngModel)]="phone_number" #Phone_number="ngModel" minlength="10" maxlength="10">
+                <button *ngIf="phone_number" matSuffix mat-icon-button aria-label="Clear" (click)="phone_number=''">
                   <mat-icon>close</mat-icon>
                 </button>
-        <mat-error *ngIf="Phonenumber.invalid && (Phonenumber.dirty || Phonenumber.touched)">
-          <mat-error *ngIf="Phonenumber.errors?.required">
+        <mat-error *ngIf="Phone_number.invalid && (Phone_number.dirty || Phone_number.touched)">
+          <mat-error *ngIf="Phone_number.errors?.required">
             Phonenumber is required.
           </mat-error>
-          <mat-error *ngIf="Phonenumber.errors?.maxlength">
+          <mat-error *ngIf="Phone_number.errors?.maxlength">
             Phonenumber cannot exists 10 characters
           </mat-error>
-          <mat-error *ngIf="Phonenumber.errors?.pattern" >  
+          <mat-error *ngIf="Phone_number.errors?.pattern" >  
             Phonenumber is not valid.  
           </mat-error> 
         </mat-error>
