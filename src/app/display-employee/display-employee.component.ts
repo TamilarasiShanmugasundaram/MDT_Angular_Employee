@@ -39,6 +39,9 @@ export class DisplayEmployeeComponent implements OnInit {
       this.total_count = data.count;
     }, err => {  
       console.log(err);
+      if(401 == err.status) {
+        //this.toastr.error(err.error.message, Constants.ERROR);
+      }
     });
   }
   

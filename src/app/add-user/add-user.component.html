@@ -1,0 +1,167 @@
+
+  <div class="bg-img">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <marquee behavior="scroll" direction="right">Employee Management System</marquee>
+    <div class="register">
+      <div class="input-field">
+        <mat-form-field>
+          <mat-label>FirstName</mat-label>
+          <input type="text" matInput  name="first_name" required pattern="[A-Za-z]{1,32}" 
+                  [(ngModel)]="first_name" #FirstName="ngModel" minlength="2" maxlength="50"><br>
+                  <button *ngIf="first_name" matSuffix mat-icon-button aria-label="Clear" (click)="first_name=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+          <mat-error *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)">
+            <mat-error *ngIf="FirstName.errors?.required">
+                FirstName is required.
+            </mat-error>
+            <mat-error *ngIf="FirstName.errors?.minlength">
+                FirstName must be at least 2 characters long.
+            </mat-error>
+            <mat-error *ngIf="FirstName.errors?.maxlength">
+                FirstName cannot exists 50 characters
+            </mat-error>
+            <mat-error *ngIf="FirstName.errors?.pattern">  
+                FirstName must contain characters only
+            </mat-error> 
+          </mat-error>
+        </mat-form-field><br>
+      </div>
+      <div class="input-field">
+        <mat-form-field>
+          <mat-label>LastName</mat-label>
+          <input type="text" matInput  name="last_name" required pattern="[A-Za-z]{1,32}" 
+                  [(ngModel)]="last_name" #LastName="ngModel" minlength="1" maxlength="50"><br>
+                  <button *ngIf="last_name" matSuffix mat-icon-button aria-label="Clear" (click)="last_name=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+          <mat-error *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)">
+            <mat-error *ngIf="LastName.errors?.required">
+                LastName is required.
+            </mat-error>
+            <mat-error *ngIf="LastName.errors?.minlength">
+                LastName must be at least 2 characters long.
+            </mat-error>
+            <mat-error *ngIf="LastName.errors?.maxlength">
+                LastName cannot exists 50 characters
+            </mat-error>
+            <mat-error *ngIf="LastName.errors?.pattern">  
+                LastName must contain characters only
+            </mat-error> 
+          </mat-error>
+        </mat-form-field><br>
+      </div>
+      <div class="input-field">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input type="text" matInput  name="username" required  
+                  [(ngModel)]="username" #Username="ngModel" minlength="2" maxlength="50"><br>
+                  <button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+          <mat-error *ngIf="Username.invalid && (Username.dirty || Username.touched)">
+            <mat-error *ngIf="Username.errors?.required">
+                Username is required.
+            </mat-error>
+            <mat-error *ngIf="Username.errors?.minlength">
+                Username must be at least 2 characters long.
+            </mat-error>
+            <mat-error *ngIf="Username.errors?.maxlength">
+                Username cannot exists 50 characters
+            </mat-error>
+          </mat-error>
+        </mat-form-field><br>
+      </div>
+      <div class="input-field">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <textarea matInput  name="address"  required rows="1" 
+                  [(ngModel)]="address" #Address="ngModel" minlength="2" maxlength="200"></textarea>
+                  <button *ngIf="address" matSuffix mat-icon-button aria-label="Clear" (click)="address=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+          <mat-error *ngIf="Address.invalid && (Address.dirty || Address.touched)">
+            <mat-error *ngIf="Address.errors?.required">
+              Address is required.
+            </mat-error>
+            <mat-error *ngIf="Address.errors?.minlength">
+              Address must be at least 2 characters long.
+            </mat-error>
+            <mat-error *ngIf="Address.errors?.maxlength">
+              Address cannot exists 200 characters
+            </mat-error>
+          </mat-error>
+        </mat-form-field><br>
+      </div>
+      
+      <div class="input-field">
+        <mat-form-field>
+          <mat-label>Phonenumber</mat-label>
+          <input type="text" matInput name="phone_number"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                  [(ngModel)]="phone_number" #Phone_number="ngModel" minlength="10" maxlength="10">
+                  <button *ngIf="phone_number" matSuffix mat-icon-button aria-label="Clear" (click)="phone_number=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+          <mat-error *ngIf="Phone_number.invalid && (Phone_number.dirty || Phone_number.touched)">
+            <mat-error *ngIf="Phone_number.errors?.required">
+              Phonenumber is required.
+            </mat-error>
+            <mat-error *ngIf="Phone_number.errors?.maxlength">
+              Phonenumber cannot exists 10 characters
+            </mat-error>
+            <mat-error *ngIf="Phone_number.errors?.pattern" >  
+              Phonenumber is not valid.  
+            </mat-error> 
+          </mat-error>
+        </mat-form-field><br>    
+        <div class="input-field">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input type="text" matInput  name="email" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+                      [(ngModel)]="email" #Email="ngModel" minlength="5" maxlength="150"><br>
+                      <button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
+                        <mat-icon>close</mat-icon>
+                      </button>
+              <mat-error *ngIf="Email.invalid && (Email.dirty || Email.touched)">
+                <mat-error *ngIf="Email.errors?.required">
+                    Email is required.
+                </mat-error>
+                <!-- <mat-error *ngIf="Email.errors?.minlength">
+                    Email must be at least 5 characters long.
+                </mat-error> -->
+                <!-- <mat-error *ngIf="Email.errors?.maxlength">
+                    Email cannot exists 150 characters
+                </mat-error> -->
+                <mat-error *ngIf="Email.errors?.pattern">
+                    Email is not valid
+                </mat-error>
+              </mat-error>
+            </mat-form-field><br>
+          </div>
+          <div class="input-field">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input type="text" matInput  name="password" required 
+                      [(ngModel)]="password" #Password="ngModel" minlength="5" maxlength="150"><br>
+                      <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
+                        <mat-icon>close</mat-icon>
+                      </button>
+              <mat-error *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+                <mat-error *ngIf="Password.errors?.required">
+                  Password is required.
+                </mat-error>
+                <mat-error *ngIf="Password.errors?.minlength">
+                  Password must be at least 5 characters long.
+                </mat-error>
+                <mat-error *ngIf="Password.errors?.pattern">
+                  Password is not valid
+                </mat-error>
+              </mat-error>
+            </mat-form-field><br>
+          </div>
+      </div>
+      
+      <button mat-raised-button [disabled]="!f.valid" color="primary">Submit</button>
+    </div>
+  </form>
+  </div>

@@ -1,17 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
+import { Observable, pipe, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Constants } from './constants';
+import { LoginServiceService } from './login-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeServiceService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) { }
-  
+  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router,
+    private login_service: LoginServiceService) { }
   /**
    * To get all employee data
    * 
@@ -39,14 +41,23 @@ export class EmployeeServiceService {
    */
   addEmployee(name: any, address: any, phone_number: any) {
     this.http.post(Constants.LOCALHOST + 'employee', {name: name, address: address, 
-      phone_number: phone_number}).subscribe((response: any) => {
+      phone_number: phone_number})
+      .subscribe((response: any) => {   
       if(response.error) {
         this.toastr.error(response.error, Constants.ERROR);
       } else {
         this.toastr.success(response.message, Constants.SUCCESS);
         this.router.navigate(['/display']);
       }
-    });
+  }, err => {  
+    console.log(err);
+    if(409 == err.status) {
+      this.toastr.error(err.error.message, Constants.ERROR);
+    }
+    if(409 == err.status) {
+      this.toastr.error(err.error.message, Constants.ERROR);
+    }
+  })
   }
 
   /**
@@ -63,6 +74,10 @@ export class EmployeeServiceService {
         console.log(response.message)
         this.toastr.success(response.message, Constants.SUCCESS);
         this.router.navigate(['/display']);
+      }
+    }, err => {  
+      if(409 == err.status) {
+        this.toastr.error(err.error.message, Constants.ERROR);
       }
     });
   }

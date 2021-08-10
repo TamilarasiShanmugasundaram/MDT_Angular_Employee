@@ -1,26 +1,63 @@
-.add {
-  padding-left: 15%;
-  padding-top: 30px;
+.app-module {
+  height: 100vh;
 }
 
-.add input {
+.app-module .sidenav {
+  background-color: black;
+  padding-top: 20px;
+}
+
+.app-module .sidenav a {
+  padding: 15px;
+  text-decoration: none;
+  font-size: 23px;
+  color: #818181;
+  display: block;
+}
+
+.app-module .sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.bg-img {
+  background-image: url("/assets/images/male-1354358_1280.png");
+  height: 30vh;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  margin-left: 15%;
+}
+
+form .add {
+  height: 90vh;
+  margin-top: 20px;
+  margin-left: 50px;
+  border-radius: 10%;
+  display: inline-block;
+  background-color: pink;
+  width: 40%;
+}
+
+form .add input {
   height: 3vh;
 }
 
-.add button {
+form .add button {
   margin-top: 20px;
+  margin-left: 30%;
 }
 
-h1 {
-  margin-top: 10px;
-  padding-left: 15%;
-  color: skyblue;
+form .add .input-field {
+  margin-bottom: 5px;
+  padding-left: 30%;
+}
+
+form .add h1 {
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-left: 30%;
+  color: lightyellow;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 25px;
-}
-
-.input-field {
-  margin-bottom: 5px;
 }
 /*# sourceMappingURL=add-employee.component.css.map */

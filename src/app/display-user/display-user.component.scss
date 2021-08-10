@@ -1,0 +1,39 @@
+table {
+    margin-left: 5%;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+  }
+  th, td {
+    width: 10%;
+  }
+  th {
+    background-color: lighten($color: #ddd, $amount: 0);
+    font-size: 15px;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+  .pagination {
+    margin-top: 15px;
+    margin-left: 75%;
+  }
+  .material-icons{
+      width: 33px;
+      color:rgb(243, 99, 99) ;
+  }
+  .blue {
+    color: rgb(101, 101, 219);
+  }
+  i {
+    cursor: pointer;
+  }
+  h1 {
+    margin-top: 5px;
+    padding-left: 35%;
+    color: skyblue;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  

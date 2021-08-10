@@ -1,0 +1,36 @@
+marquee {
+  height: 7vh;
+  border: solid;
+  padding-right: 30px;
+  font-family: sans-serif;
+  color: white;
+  padding-top: 10px;
+  border: unset;
+  font-size: 28px;
+  background-color: skyblue;
+}
+.bg-img {
+  background-image: url('/assets/images/Screenshot_20210807-115819_Chrome.jpg');
+height: 98vh;
+background-repeat: no-repeat;
+background-size: 100%;
+height: 100vh;
+background-attachment: fixed;
+background-position: 0 0 0 40px; 
+}
+.login {
+  padding-left: 10%;
+  padding-top: 10%;
+  input { 
+    height: 3vh;
+  }
+  .input-field {
+      margin-bottom: 3px;
+    }
+    button {
+  //display: block;
+  margin-top: 50px;
+  margin-right: 5%;
+}
+}
+

@@ -1,12 +1,24 @@
-<h1  *ngIf = "url == '/add' || url == '/'">Add Employee</h1>
-<h1  *ngIf = "url != '/add' && url != '/'">Edit Employee</h1>
+<mat-drawer-container class="app-module">
+  <mat-drawer mode="side" opened class="sidenav"> 
+    <a href="add">Add Employee</a>
+    <a href="display">Employee List</a>  
+  </mat-drawer>
+<mat-drawer-content>
+  <div class="right">
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <!-- <marquee behavior="scroll" direction="right">Employee Management System</marquee> -->
+  <h1 class="heading">Employee Management System</h1>
   <div class="add">
+    <h1  *ngIf = "url == '/add' || url == '/'">Add Employee</h1>
+<h1  *ngIf = "url != '/add' && url != '/'">Edit Employee</h1>
+    <div>
+      <div class="bg-img"></div>
+    </div>
     <div class="input-field">
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input type="text" matInput  name="name" required pattern="[A-Za-z]{1,32}" 
-                [(ngModel)]="name" #Name="ngModel" minlength="2" maxlength="50"><br>
+                [(ngModel)]="name" #Name="ngModel" minlength="2"><br>
                 <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
                   <mat-icon>close</mat-icon>
                 </button>
@@ -15,10 +27,7 @@
             Name is required.
           </mat-error>
           <mat-error *ngIf="Name.errors?.minlength">
-            Name must be at least 2 characters long.
-          </mat-error>
-          <mat-error *ngIf="Name.errors?.maxlength">
-            Name cannot exists 50 characters
+            Name must be at least 3 characters long.
           </mat-error>
           <mat-error *ngIf="Name.errors?.pattern">  
             Name must contain characters only
@@ -75,6 +84,9 @@
     <button mat-raised-button *ngIf = "url != '/add'" [disabled]="!(f.valid) || (!f.dirty)"   color="primary">Submit</button>
   </div>
 </form>
+</div>
+</mat-drawer-content>  
 
+</mat-drawer-container>
 
 

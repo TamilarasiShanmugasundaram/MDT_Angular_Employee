@@ -1,12 +1,7 @@
 .app-module {
   height: 100vh;
-  //padding:0;
-  //margin:0;
 
   .sidenav {
-   //margin-right: 30px;
-  //  margin:0;
-  //  padding:0;
     background-color: lighten($color: #000000, $amount: 0);
     padding-top: 20px;
   }
@@ -24,4 +19,18 @@
   }
 }
 
-
+.login {
+  width: 30%;
+  margin-left: 20%;
+  background-color: lightgray;
+  h1 {
+    padding-left: 10%;
+    margin-top: 5%;
+  }
+  // .login_credentials {
+  //   border: solid;
+  //   width: 30%;
+  //   margin-left: 20%;
+  //   //margin-top: 10%;
+  // }
+}
