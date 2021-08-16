@@ -1,39 +1,42 @@
-.register {
-  padding-left: 15%;
-  padding-top: 30px;
+.bg-img {
+  background-image: url("/assets/images/plain.jpg");
+  height: 92vh;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
-.register input {
+.bg-img .register {
+  padding-top: 10px;
+}
+
+.bg-img .register form {
+  background-color: #ddd;
+  margin-left: 35%;
+  height: 87.8vh;
+  width: 30%;
+}
+
+.bg-img .register form h1 {
+  height: 6vh;
+  padding-top: 5px;
+  color: white;
+  background-color: #907fdb;
+  padding-left: 18%;
+  font-family: sans-serif;
+  font-size: 30px;
+}
+
+.bg-img .register form input {
   height: 3vh;
 }
 
-.register button {
+.bg-img .register form button {
   margin-top: 20px;
+  margin-left: 20%;
 }
 
-.register .input-field {
+.bg-img .register form .input-field {
   margin-bottom: 5px;
-}
-
-marquee {
-  height: 7vh;
-  border: solid;
-  padding-right: 30px;
-  font-family: sans-serif;
-  color: white;
-  padding-top: 10px;
-  border: unset;
-  font-size: 28px;
-  background-color: skyblue;
-}
-
-.bg-img {
-  background-image: url("/assets/images/Screenshot_20210807-115819_Chrome.jpg");
-  height: 98vh;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  height: 100vh;
-  background-attachment: fixed;
-  background-position: 0 0 0 40px;
+  padding-left: 20%;
 }
 /*# sourceMappingURL=add-user.component.css.map */

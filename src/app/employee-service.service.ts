@@ -51,10 +51,13 @@ export class EmployeeServiceService {
       }
   }, err => {  
     console.log(err);
-    if(409 == err.status) {
+    // Conflict error
+    if(409 == err.status) { 
       this.toastr.error(err.error.message, Constants.ERROR);
     }
-    if(409 == err.status) {
+    // Unauthorized error
+    if(401 == err.status) {
+      alert(err)
       this.toastr.error(err.error.message, Constants.ERROR);
     }
   })
@@ -79,6 +82,9 @@ export class EmployeeServiceService {
       if(409 == err.status) {
         this.toastr.error(err.error.message, Constants.ERROR);
       }
+      if(401 == err.status) {
+        this.toastr.error(err.error.message, Constants.ERROR);
+      }
     });
   }
 
@@ -94,6 +100,13 @@ export class EmployeeServiceService {
       } else {
         this.toastr.success(name + response.message, Constants.SUCCESS);
       }
-    });
+    }, err => {  
+      console.log(err);
+      // Unauthorized error
+      if(401 == err.status) {
+        alert(err)
+        this.toastr.error(err.error.message, Constants.ERROR);
+      }
+    })
   }
 }

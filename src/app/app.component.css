@@ -1,32 +1,12 @@
-.app-module {
-  height: 100vh;
-}
-
-.app-module .sidenav {
-  background-color: black;
-  padding-top: 20px;
-}
-
-.app-module .sidenav a {
-  padding: 15px;
-  text-decoration: none;
-  font-size: 23px;
-  color: #818181;
-  display: block;
-}
-
-.app-module .sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.login {
-  width: 30%;
-  margin-left: 20%;
-  background-color: lightgray;
-}
-
-.login h1 {
-  padding-left: 10%;
-  margin-top: 5%;
+h1 {
+  text-align: center;
+  font-family: sans-serif;
+  background-color: #a97eaa;
+  color: white;
+  padding-top: 8px;
+  border: solid;
+  height: 8vh;
+  margin: 0;
+  border: unset;
 }
 /*# sourceMappingURL=app.component.css.map */

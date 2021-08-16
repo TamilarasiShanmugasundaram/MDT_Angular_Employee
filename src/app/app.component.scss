@@ -1,36 +1,13 @@
-.app-module {
-  height: 100vh;
-
-  .sidenav {
-    background-color: lighten($color: #000000, $amount: 0);
-    padding-top: 20px;
-  }
-
-  .sidenav a {
-    padding: 15px;
-    text-decoration: none;
-    font-size: 23px;
-    color: #818181;
-    display: block;
-  }
-
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-}
-
-.login {
-  width: 30%;
-  margin-left: 20%;
-  background-color: lightgray;
-  h1 {
-    padding-left: 10%;
-    margin-top: 5%;
-  }
-  // .login_credentials {
-  //   border: solid;
-  //   width: 30%;
-  //   margin-left: 20%;
-  //   //margin-top: 10%;
-  // }
+$page-background-color: rgb(169, 126, 170);
+$white: white;
+h1 {
+    text-align: center;
+    font-family: sans-serif;;
+    background-color: $page-background-color;
+    color: $white;
+    padding-top: 8px;
+    border: solid;
+    height: 8vh;
+    margin: 0;
+    border: unset;
 }

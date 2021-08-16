@@ -19,19 +19,19 @@ export class UserServiceService {
    * @param page contains page number
    * return all employees
    */ 
-  getUsers(): Observable<any> {
-    return this.http.get(Constants.LOCALHOST + 'user');
-  }
+  // getUsers(): Observable<any> {
+  //   return this.http.get(Constants.LOCALHOST + 'user');
+  // }
      
-  /**
-   * To get particular employee data
-   * 
-   * @param id contains employee id
-   * return particular employee
-   */ 
-  getUserById(id: any): Observable<any> {
-    return this.http.get(Constants.LOCALHOST + 'user/' + id);
-  }
+  // /**
+  //  * To get particular employee data
+  //  * 
+  //  * @param id contains employee id
+  //  * return particular employee
+  //  */ 
+  // getUserById(id: any): Observable<any> {
+  //   return this.http.get(Constants.LOCALHOST + 'user/' + id);
+  // }
   
   /**
    * To add user 
@@ -51,6 +51,10 @@ export class UserServiceService {
       }
     }, err => {  
       if(409 == err.status) {
+        this.toastr.error(err.error.message, Constants.ERROR);
+      }
+      if(401 == err.status) {
+        alert(err)
         this.toastr.error(err.error.message, Constants.ERROR);
       }
     });

@@ -10,15 +10,11 @@ import { LoginServiceService } from "./login-service.service";
 export class AuthInterceptor  implements HttpInterceptor {  
   constructor(private login_service: LoginServiceService) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //const token = localStorage.token; 
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> { 
   const token = localStorage.getItem("token"); 
-  //alert('localStorage' + localStorage.getItem("token"));
     if (!token) {
-      //alert('without token' + token)
       return next.handle(req);
     }
-    //alert('with token'+ token)
     const req1 = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`),
     });  

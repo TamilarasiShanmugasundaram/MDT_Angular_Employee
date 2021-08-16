@@ -25,6 +25,12 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  /**
+   * Create a user 
+   * 
+   * @param form contains a user details
+   */
   onSubmit(form: NgForm) {
     this.first_name = form.controls[Constants.FIRST_NAME].value;
     this.last_name = form.controls[Constants.LAST_NAME].value;
@@ -36,4 +42,11 @@ export class AddUserComponent implements OnInit {
     this.user_service.addUser(this.first_name, this.last_name, this.username, 
       this.address, this.phone_number, this.email, this.password);
   } 
+
+  /**
+   * Navigate to login page
+   */
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
 }

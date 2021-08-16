@@ -1,92 +1,82 @@
 <mat-drawer-container class="app-module">
   <mat-drawer mode="side" opened class="sidenav"> 
-    <a href="add">Add Employee</a>
-    <a href="display">Employee List</a>  
+    <i class="material-icons">group_add</i>
+    <a href="add" >Create</a><br>
+    <i class="material-icons">playlist_add_circle</i>
+    <a href="display">List</a>  
+    <i (click)="navigateToLogout()" class="material-icons logout">power_settings_new</i>
   </mat-drawer>
-<mat-drawer-content>
-  <div class="right">
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <!-- <marquee behavior="scroll" direction="right">Employee Management System</marquee> -->
-  <h1 class="heading">Employee Management System</h1>
-  <div class="add">
-    <h1  *ngIf = "url == '/add' || url == '/'">Add Employee</h1>
-<h1  *ngIf = "url != '/add' && url != '/'">Edit Employee</h1>
-    <div>
-      <div class="bg-img"></div>
-    </div>
-    <div class="input-field">
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input type="text" matInput  name="name" required pattern="[A-Za-z]{1,32}" 
-                [(ngModel)]="name" #Name="ngModel" minlength="2"><br>
-                <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
-                  <mat-icon>close</mat-icon>
-                </button>
-        <mat-error *ngIf="Name.invalid && (Name.dirty || Name.touched)">
-          <mat-error *ngIf="Name.errors?.required">
-            Name is required.
-          </mat-error>
-          <mat-error *ngIf="Name.errors?.minlength">
-            Name must be at least 3 characters long.
-          </mat-error>
-          <mat-error *ngIf="Name.errors?.pattern">  
-            Name must contain characters only
-          </mat-error> 
-        </mat-error>
-      </mat-form-field><br>
-    </div>
-   
-    <div class="input-field">
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <textarea matInput  name="address"  required rows="1" 
-                [(ngModel)]="address" #Address="ngModel" minlength="2" maxlength="200"></textarea>
-                <button *ngIf="address" matSuffix mat-icon-button aria-label="Clear" (click)="address=''">
-                  <mat-icon>close</mat-icon>
-                </button>
-        <mat-error *ngIf="Address.invalid && (Address.dirty || Address.touched)">
-          <mat-error *ngIf="Address.errors?.required">
-            Address is required.
-          </mat-error>
-          <mat-error *ngIf="Address.errors?.minlength">
-            Address must be at least 2 characters long.
-          </mat-error>
-          <mat-error *ngIf="Address.errors?.maxlength">
-            Address cannot exists 200 characters
-          </mat-error>
-        </mat-error>
-      </mat-form-field><br>
-    </div>
-    
-    <div class="input-field">
-      <mat-form-field>
-        <mat-label>Phonenumber</mat-label>
-        <input type="text" matInput name="phone_number"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
-                [(ngModel)]="phone_number" #Phone_number="ngModel" minlength="10" maxlength="10">
-                <button *ngIf="phone_number" matSuffix mat-icon-button aria-label="Clear" (click)="phone_number=''">
-                  <mat-icon>close</mat-icon>
-                </button>
-        <mat-error *ngIf="Phone_number.invalid && (Phone_number.dirty || Phone_number.touched)">
-          <mat-error *ngIf="Phone_number.errors?.required">
-            Phonenumber is required.
-          </mat-error>
-          <mat-error *ngIf="Phone_number.errors?.maxlength">
-            Phonenumber cannot exists 10 characters
-          </mat-error>
-          <mat-error *ngIf="Phone_number.errors?.pattern" >  
-            Phonenumber is not valid.  
-          </mat-error> 
-        </mat-error>
-      </mat-form-field><br>
-    </div>
-    
-    <button mat-raised-button *ngIf = "url == '/add'" [disabled]="!f.valid" color="primary">Submit</button>
-    <button mat-raised-button *ngIf = "url != '/add'" [disabled]="!(f.valid) || (!f.dirty)"   color="primary">Submit</button>
-  </div>
-</form>
-</div>
-</mat-drawer-content>  
-
+  <mat-drawer-content>
+    <div class="add">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <h1  *ngIf = "url == '/add' || url == '/'">Create a employee</h1>
+        <h1 *ngIf = "url != '/add' && url != '/'">Update a employee</h1>
+        <div class="input-field">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput  name="name" required pattern="[A-Za-z]{1,32}" 
+              [(ngModel)]="name" #Name="ngModel" minlength="2"><br>
+            <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="Name.invalid && (Name.dirty || Name.touched)">
+              <mat-error *ngIf="Name.errors?.required">
+                Name is required.
+              </mat-error>
+              <mat-error *ngIf="Name.errors?.minlength">
+                Ateast 3 characters long.
+              </mat-error>
+              <mat-error *ngIf="Name.errors?.pattern">  
+                Contain characters only
+              </mat-error> 
+            </mat-error>  
+          </mat-form-field><br>
+        </div>
+        <div class="input-field">
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <textarea matInput  name="address"  required rows="1" 
+              [(ngModel)]="address" #Address="ngModel" minlength="2" maxlength="200"></textarea>
+            <button *ngIf="address" matSuffix mat-icon-button aria-label="Clear" (click)="address=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="Address.invalid && (Address.dirty || Address.touched)">
+              <mat-error *ngIf="Address.errors?.required">
+                Address is required.
+              </mat-error>
+              <mat-error *ngIf="Address.errors?.minlength">
+                Atleast 2 characters long.
+              </mat-error>
+              <mat-error *ngIf="Address.errors?.maxlength">
+                Cannot exists 200 characters
+              </mat-error>
+            </mat-error>
+          </mat-form-field><br>
+        </div>
+        
+        <div class="input-field">
+          <mat-form-field>
+            <mat-label>Phonenumber</mat-label>
+            <input type="text" matInput name="phone_number"  required pattern="^((\\+91-?)|0)?[0-9]{10}$"
+              [(ngModel)]="phone_number" #Phone_number="ngModel" minlength="10" maxlength="10">
+            <button *ngIf="phone_number" matSuffix mat-icon-button aria-label="Clear" (click)="phone_number=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="Phone_number.invalid && (Phone_number.dirty || Phone_number.touched)">
+              <mat-error *ngIf="Phone_number.errors?.required">
+                Phonenumber is required.
+              </mat-error>
+              <mat-error *ngIf="Phone_number.errors?.pattern" >  
+                Phonenumber is not valid.  
+              </mat-error> 
+            </mat-error>
+          </mat-form-field><br>
+        </div>
+        <button mat-raised-button *ngIf = "url == '/add'" [disabled]="!f.valid" color="primary">Submit</button>
+        <button mat-raised-button *ngIf = "url != '/add'" [disabled]="!(f.valid) || (!f.dirty)"   color="primary">Submit</button>
+      </form>
+    </div>  
+  </mat-drawer-content> 
 </mat-drawer-container>
 
 

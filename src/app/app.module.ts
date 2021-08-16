@@ -17,20 +17,22 @@ import { MatIconModule } from '@angular/material/icon'
 import { ToastrModule} from 'ngx-toastr';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
 import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
-import { DialogEmployeeComponent } from './dialog-employee/dialog-employee.component';
 import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { DisplayUserComponent } from './display-user/display-user.component';
+//import { DisplayUserComponent } from './display-user/display-user.component';
 import { AuthInterceptor } from './auth-interceptor';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     AddEmployeeComponent,
     DisplayEmployeeComponent,
-    DialogEmployeeComponent,
     LoginComponent,
     AddUserComponent,
-    DisplayUserComponent
+    //DisplayUserComponent,
+    LogoutDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,

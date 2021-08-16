@@ -1,44 +1,44 @@
 <mat-drawer-container class="app-module">
   <mat-drawer mode="side" opened class="sidenav"> 
-    <a href="add">Add Employee</a>
-    <a href="display">Employee List</a>  
+    <i class="material-icons side-nav-i"> group_add</i>
+    <a href="add" >Create</a><br>
+    <i class="material-icons side-nav-i"> playlist_add_circle</i>
+    <a href="display">List</a>  
+    <i (click)="navigateToLogout()" class="material-icons logout">power_settings_new</i>
   </mat-drawer>
-<mat-drawer-content >
-<div class="display">
-<h1>Employee Details</h1>
-<table mat-table [dataSource]="employees" >
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let employee"> {{employee.id}} </td>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let employee"> {{employee.name}} </td>
-  </ng-container>
-  <ng-container matColumnDef="address">
-    <th mat-header-cell *matHeaderCellDef>Address</th>
-    <td mat-cell *matCellDef="let employee"> {{employee.address}} </td>
-  </ng-container>
-  <ng-container matColumnDef="phone_number">
-    
-    <th mat-header-cell *matHeaderCellDef >Phone number</th>
-    <td mat-cell *matCellDef="let employee" style="padding-right: 10px;"> {{employee.phone_number}} </td>
-  </ng-container>
-  <ng-container matColumnDef="Action">
-    <th mat-header-cell *matHeaderCellDef>Action</th>
-    <td mat-cell *matCellDef="let employee">
-      <i (click)="navigateToEdit(employee.id)" class="material-icons blue">edit</i>
-      <i (click)="deleteEmployee(employee.id, employee.name)" class="material-icons">delete</i> 
-    </td>
-  </ng-container>
-  
-  <tr mat-header-row *matHeaderRowDef=" ['id', 'name', 'address', 'phone_number', 'Action']"></tr>
-  <tr mat-row  *matRowDef="let row; columns:  ['id', 'name', 'address', 'phone_number', 'Action'];"></tr>    
-</table>
-<ngb-pagination (pageChange)="onPaginationClick($event)" class="pagination"  *ngIf = "total_count > 10"
-  [collectionSize]="total_count"  [(page)]="page" [boundaryLinks]="true">
-  <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
-</ngb-pagination>
-</div> 
-</mat-drawer-content> 
+  <mat-drawer-content >
+    <div class="display"> 
+      <table mat-table [dataSource]="employees" >
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let employee"> {{employee.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let employee"> {{employee.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let employee"> {{employee.address}} </td>
+        </ng-container>
+        <ng-container matColumnDef="phone_number">
+          <th mat-header-cell *matHeaderCellDef >Phone number</th>
+          <td mat-cell *matCellDef="let employee" style="padding-right: 10px;"> {{employee.phone_number}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let employee">
+            <i (click)="navigateToEdit(employee.id)" class="material-icons blue">edit</i>
+            <i (click)="deleteEmployee(employee.id, employee.name)" class="material-icons red">delete</i> 
+          </td>
+        </ng-container>  
+        <tr mat-header-row *matHeaderRowDef=" ['id', 'name', 'address', 'phone_number', 'Action']"></tr>
+        <tr mat-row  *matRowDef="let row; columns:  ['id', 'name', 'address', 'phone_number', 'Action'];"></tr>    
+      </table>
+      <ngb-pagination (pageChange)="onPaginationClick($event)" class="pagination"  *ngIf = "total_count > 10"
+        [collectionSize]="total_count"  [(page)]="page" [boundaryLinks]="true">
+        <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+      </ngb-pagination>
+    </div> 
+  </mat-drawer-content> 
 </mat-drawer-container>

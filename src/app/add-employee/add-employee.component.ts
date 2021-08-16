@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { Constants } from '../constants';
 import { EmployeeServiceService } from '../employee-service.service';
+import { LoginServiceService } from '../login-service.service';
+import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component';
 
 @Component({
   selector: 'app-add-employee',
@@ -22,8 +25,12 @@ export class AddEmployeeComponent implements OnInit {
   url:any = '';
 
   constructor(private employee_service: EmployeeServiceService, private route: ActivatedRoute, 
-    private toastr: ToastrService, private router: Router) { }
+    private dialog: MatDialog, private router: Router, private toastr: ToastrService, 
+    private login_service: LoginServiceService ) { }
 
+  /**
+   * Get a employee detail by id to update 
+   */
   ngOnInit(): void {
     this.url = this.router.url;
     if('/add' != this.router.url) {
@@ -35,15 +42,18 @@ export class AddEmployeeComponent implements OnInit {
           this.phone_number = data.phone_number;
         }, err => {  
           console.log(err);
+          if(401 == err.status) {
+            this.toastr.error(err.error.message, Constants.ERROR);
+          }
         });
       }
     }
   }
 
   /**
-   * To add employee data
+   * Create a employee
    * 
-   * @param form contains name, address, phone_number
+   * @param form contains a employee details
    */
   onSubmit(form: NgForm) {
     this.id = this.route.snapshot.paramMap.get(Constants.ID);
@@ -56,4 +66,26 @@ export class AddEmployeeComponent implements OnInit {
       this.employee_service.addEmployee(name, address, phone_number);
     }  
   }  
+
+  /**
+   * Navigate to logout page
+   */
+   navigateToLogout() {
+    const dialogRef = this.dialog.open(LogoutDialogComponent,{
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(true == result) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  /**
+   * Navigate to display employee page
+   */
+  navigateToDisplay() {
+    this.login_service.is_authenticate = true;
+    this.router.navigate(['/display']);
+  }
 }

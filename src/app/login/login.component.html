@@ -1,58 +1,63 @@
 <div class="bg-img">
-<form #f="ngForm" (ngSubmit)="login(f)">
-  <marquee behavior="scroll" direction="right">Employee Management System</marquee>
   <div class="login">
-  <div class="input-field">
-    <mat-form-field>
-      <mat-label>Username </mat-label>
-      <input type="text" matInput  name="username" required  
-              [(ngModel)]="username" #Username="ngModel" minlength="2" maxlength="100"><br>
-              <button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
-                <mat-icon>close</mat-icon>
-              </button>
-      <mat-error *ngIf="Username.invalid && (Username.dirty || Username.touched)">
-        <mat-error *ngIf="Username.errors?.required">
-          Username is required.
-        </mat-error>
-        <mat-error *ngIf="Username.errors?.minlength">
-          Username must be at least 2 characters long.
-        </mat-error>
-        <mat-error *ngIf="Username.errors?.maxlength">
-          Username cannot exists 100 characters
-        </mat-error>
-        <!-- <mat-error *ngIf="Username.errors?.pattern">  
-          Username is not valid
-        </mat-error>  -->
-      </mat-error>
-    </mat-form-field><br>
+    <form #f="ngForm" (ngSubmit)="login(f)">
+      <h1>Login !!!</h1>
+      <div class="input-field">
+        <mat-form-field>
+          <mat-label>Username </mat-label>
+            <input type="text" matInput  name="username" required  
+              [(ngModel)]="username" #Username="ngModel" minlength="3" ><br>
+            <button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          <mat-error *ngIf="Username.invalid && (Username.dirty || Username.touched)">
+            <mat-error *ngIf="Username.errors?.required">
+              Username is required.
+            </mat-error>
+            <mat-error *ngIf="Username.errors?.minlength">
+              Atleast 3 characters long.
+            </mat-error>
+          </mat-error>
+        </mat-form-field><br>
+      </div>
+      <div class="input-field password" >   
+        <mat-form-field>
+          <mat-label>Password </mat-label>
+          <input type="password" matInput  name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+            [(ngModel)]="password" #Password="ngModel" minlength="5"><br>
+          <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+            <mat-error *ngIf="Password.errors?.required">
+              Password is required.
+            </mat-error>
+            <mat-error *ngIf="Password.errors?.pattern">
+              Atleast 1 uppercase, lowercase, number, 5 character long
+            </mat-error>
+          </mat-error>
+        </mat-form-field><br>
+      </div>
+      <button mat-raised-button [disabled]="!f.valid" color="primary">Submit </button><br>
+      <span>Don't have an Account?</span>
+      <button mat-raised-button (click)="navigateToRegister()" color="primary">Signup </button> 
+    </form>
+  </div>
+</div>
+
+
+<!-- 
+<div class="login">
+  <div class="left">
+    <div class="bg-img">
+      <h1>Login / Sign Up  to Interact with a Community of Automotive  Experts</h1>
+    </div>
+        
+  </div>
+  <div class="right">
+    <h3>Please Login to Access Your ASPIRE Account.</h3>
+    <p>Welcome Back, Fill in the details to continue.</p>
+    
   </div>
 
-  <div class="input-field">
-    <mat-form-field>
-      <mat-label>Password </mat-label>
-      <input type="password" matInput  name="password" required 
-              [(ngModel)]="password" #Password="ngModel" minlength="5" maxlength="50"><br>
-              <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
-                <mat-icon>close</mat-icon>
-              </button>
-              <mat-error *ngIf="Password.invalid && (Password.dirty || Password.touched)">
-                <mat-error *ngIf="Password.errors?.required">
-                  Password is required.
-                </mat-error>
-                <mat-error *ngIf="Password.errors?.minlength">
-                  Password must be at least 5 characters long.
-                </mat-error>
-                <!-- <mat-error *ngIf="Email.errors?.maxlength">
-                    Email cannot exists 150 characters
-                </mat-error> -->
-                <mat-error *ngIf="Password.errors?.pattern">
-                  Password is not valid
-                </mat-error>
-              </mat-error>
-    </mat-form-field><br>
-  </div>
-  <button mat-raised-button [disabled]="!f.valid" color="primary">Login </button>
-  <button mat-raised-button (click)="register()" color="primary">Register </button> 
-</div>
-</form>
-</div>
+</div> -->

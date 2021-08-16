@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceService } from '../employee-service.service';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog"; 
+import {MatDialog} from "@angular/material/dialog"; 
 import { Router } from '@angular/router';
-import { Constants } from '../constants';
 
-import { DialogEmployeeComponent } from '../dialog-employee/dialog-employee.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component';
+import { Constants } from '../constants';
+import { ToastrService } from 'ngx-toastr';
+import { LoginServiceService } from '../login-service.service';
 
 
 @Component({
@@ -18,18 +21,18 @@ export class DisplayEmployeeComponent implements OnInit {
   page = 1;
   total_count: any;
 
-  constructor(private employee_service: EmployeeServiceService,
-    private dialog: MatDialog, private router: Router) { }
+  constructor(private employee_service: EmployeeServiceService, private toastr: ToastrService,
+    private dialog: MatDialog, private router: Router, private login_service: LoginServiceService) { }
 
   /**
-   * To get employee data when page load
+   * To get employee details when page load
    */
   ngOnInit(): void {
     this.fetchEmployees(this.page);
   }
 
   /**
-   * To get employee data
+   * To get employee 
    * 
    * @param page contains page number
    */
@@ -40,13 +43,13 @@ export class DisplayEmployeeComponent implements OnInit {
     }, err => {  
       console.log(err);
       if(401 == err.status) {
-        //this.toastr.error(err.error.message, Constants.ERROR);
+        this.toastr.error(err.error.message, Constants.ERROR);
       }
     });
   }
   
   /**
-   * To get employee data for particular page when click on page number
+   * To get employee details for particular page when click on page number
    * 
    * @param event contains page number
    */
@@ -55,13 +58,13 @@ export class DisplayEmployeeComponent implements OnInit {
   }
 
   /**
-   * To delete employee data
+   * To delete employee by id
    *  
    * @param id contains employee id
    * @param name contains employee name
    */
   deleteEmployee(id: any, name: any) {
-    const dialogRef = this.dialog.open(DialogEmployeeComponent,{
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
       disableClose: true,
       data:{name: name}
     });
@@ -74,11 +77,34 @@ export class DisplayEmployeeComponent implements OnInit {
   }
 
   /**
-   * To delete employee data 
+   * Navigate to edit page
    * 
    * @param id contains employee id
    */
   navigateToEdit(id: any) {
+    this.login_service.is_authenticate = true;
     this.router.navigate(['/edit/' + id]);
+  }
+  
+  /**
+   * Navigate to logout page
+   */
+  navigateToLogout() {
+    const dialogRef = this.dialog.open(LogoutDialogComponent,{
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(true == result) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  /**
+   * Navigate to create page
+   */
+  navigateToCreate() {
+    this.login_service.is_authenticate = true;
+    this.router.navigate(['/add']);
   }
 }

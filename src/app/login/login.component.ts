@@ -13,22 +13,27 @@ import { LoginServiceService } from '../login-service.service';
 export class LoginComponent implements OnInit {
   username: String ='';
   password: String ='';
-  users: any = [];
-  total_count = 0;
-  
   constructor(private login_service: LoginServiceService,  private router: Router,  
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
-  
+
+  /**
+   * Login user
+   * 
+   * @param form contain login credentials
+   */
   login(form: NgForm) {
     this.username = form.controls[Constants.USERNAME].value;
     this.password = form.controls[Constants.PASSWORD].value;
     this.login_service.logInUser(this.username, this.password);
   } 
   
-  register()  {
+  /**
+   * Navigate to logout page
+   */
+  navigateToRegister()  {
     this.router.navigate(['/addUser']);
   }
 }

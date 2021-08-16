@@ -9,7 +9,7 @@ import { Constants } from './constants';
   providedIn: 'root'
 })
 export class LoginServiceService {
-
+  is_authenticate = false;
   token: string = '';
   constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) { }
   
@@ -22,15 +22,12 @@ export class LoginServiceService {
     this.http.post(Constants.LOCALHOST + 'login', {username: username, password: password})
     .subscribe((response: any) => {
       if(response.token) {
+        this.is_authenticate = true;
         this.token = response.token;
         localStorage.setItem("token", this.token);
         this.router.navigate(['/add']);
       } else {
         this.toastr.error(response.error, Constants.ERROR);
-      }
-    }, err => {  
-      if(401 == err.status) {
-        this.toastr.error(err.error.message, Constants.ERROR);
       }
     });
   }
