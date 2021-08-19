@@ -14,7 +14,7 @@ $side-nav-color: rgb(86, 86, 131);
 
 .app-module {
   background-color: $white;
-  height: 92vh;
+  height: 95.5%;
   .sidenav {
     background-color: $side-nav-color;
     padding-top: 20px;
@@ -23,20 +23,28 @@ $side-nav-color: rgb(86, 86, 131);
   .side-nav-i {
     margin-left: 20px;
     color: $white;
+    display: inline-block;
     font-size: 30px;
+    cursor: pointer;
   }
   .logout {
-    color: $white;
-    font-size: 35px;
-    padding-left: 60px;
-    margin-top: 210%;
-  }
-  .sidenav a {
-    margin-left: 25px;
-    padding: 15px;
+    cursor: pointer;
+    margin-left: 15px;    
     text-decoration: none;
     font-size: 23px;
+    margin-top: 770%;
+    color: $side-nav-word-color;
     display: inline-block;
+  }
+  .side-nav-a-div {
+    display: inline-block;
+    padding-bottom: 20px;
+  }
+  .side-nav-a {
+    cursor: pointer;
+    margin-left: 25px;    
+    font-size: 23px;
+    text-decoration: none;
     color: $side-nav-word-color;
   }
   .sidenav a:hover {
@@ -44,7 +52,7 @@ $side-nav-color: rgb(86, 86, 131);
   }
   .display {
     table {
-      margin-left: 20%;
+      margin-left: 15%;
       border: 1px solid $th-color;
       margin-top: 2px;
     }
@@ -52,11 +60,11 @@ $side-nav-color: rgb(86, 86, 131);
       background-color: $th-color;
     }
     th, td {
-      width: 22%;
+      width: 18.5%;
+      font-size: 20px;
     }
     th {
       background-color: $lightslategrey;
-      font-size: 15px;
       color: $white;
     }
     
@@ -65,9 +73,9 @@ $side-nav-color: rgb(86, 86, 131);
       margin-left: 47%;
     }
     .red{
-        width: 33px;
-        color: $edit-color;
-        font-size: 25px;
+      width: 33px;
+      color: $edit-color;
+      font-size: 25px;
     }
     .blue {
       font-size: 25px;

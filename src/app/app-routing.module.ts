@@ -13,9 +13,9 @@ const routes: Routes = [
   {path:'edit/:id',component:AddEmployeeComponent, canActivate:[AuthenticationGuard]},
   {path:'display',component:DisplayEmployeeComponent},
   {path:'add',component:AddEmployeeComponent},
+  {path:'register',component:AddUserComponent},
   // {path:'display',component:DisplayEmployeeComponent, canActivate:[AuthenticationGuard]},
   // {path:'add',component:AddEmployeeComponent, canActivate:[AuthenticationGuard]},
-  //{path:'displayUser',component:DisplayUserComponent},
   {path:'login',component:LoginComponent}
   
 ];

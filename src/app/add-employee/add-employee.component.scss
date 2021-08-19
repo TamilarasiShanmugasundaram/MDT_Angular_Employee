@@ -8,29 +8,38 @@ $black: black;
 
 .app-module {
   background-color: $form-background-color;
-  height: 92vh;
+  height: 95.5%;
   .sidenav {
     background-color: $side_nav-color;
     padding-top: 20px;
     width: 15%;
   }
-  i {
+  .side-nav-i {
     margin-left: 20px;
     color: $white;
-    font-size: 30px;
     display: inline-block;
+    font-size: 30px;
+    cursor: pointer;
   }
   .logout {
-    padding-left: 60px;
-    margin-top: 210%;
-  }
-  .sidenav a {
-    margin-left: 25px;
-    padding: 15px;
+    cursor: pointer;
+    margin-left: 15px;    
     text-decoration: none;
     font-size: 23px;
+    margin-top: 770%;
     color: $side-nav-word-color;
     display: inline-block;
+  }
+  .side-nav-a-div {
+    display: inline-block;
+    padding-bottom: 20px;
+  }
+  .side-nav-a {
+    cursor: pointer;
+    margin-left: 25px;    
+    font-size: 23px;
+    text-decoration: none;
+    color: $side-nav-word-color;
   }
   .sidenav a:hover {
     color: $side-nav-word-hover-color;
@@ -39,35 +48,35 @@ $black: black;
     form {
       background-color: $white;
       margin-top: 5%;
-      width: 25%;
-      margin-left: 35%;
-      height: 50vh;
-      h1 {
-        height: 5vh;
-        color: $white;
-        font-family: sans-serif;
-        font-size: 25px;
-      }
+      width: 28%;
+      margin-left: auto;
+      margin-right: auto;
+      height: 30rem;
       input { 
         height: 3vh;
       }
       button {
         margin-top: 10px;
-        margin-left: 20%;
+        margin-left: 38%;
+        font-size: 17px;
       }
       .input-field {
-        margin-bottom: 5px;
-        padding-left: 20%;
+        mat-form-field {
+          font-size: 20px;
+          width: 100%;
+        }
+        margin-left: 50px;
+        margin-right: 50px;
       } 
       h1 {
         width: 100%;
-        height: 7vh;
+        height: 5vh;
         background-color: $form-heading;
-        padding-left: 22%;
+        text-align: center;
         padding-top: 5px;
         color: $white;
         font-family: sans-serif;
-        font-size: 20px;
+        font-size: 25px;
       } 
     }
   }

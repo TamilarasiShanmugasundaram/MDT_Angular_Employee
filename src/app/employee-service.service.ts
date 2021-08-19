@@ -39,9 +39,9 @@ export class EmployeeServiceService {
    * 
    * @param contains name, address, phonenumber, created_at, updated_at, is_deleted 
    */
-  addEmployee(name: any, address: any, phone_number: any) {
+  addEmployee(name: any, address: any, phone_number: any, email: any) {
     this.http.post(Constants.LOCALHOST + 'employee', {name: name, address: address, 
-      phone_number: phone_number})
+      phone_number: phone_number, email: email})
       .subscribe((response: any) => {   
       if(response.error) {
         this.toastr.error(response.error, Constants.ERROR);
@@ -68,9 +68,9 @@ export class EmployeeServiceService {
    * 
    * @param contains id, name, address, phonenumber, created_at, updated_at, is_deleted  
    */ 
-  updateEmployee(id: any, name: any, address: any, phone_number: any) {
+  updateEmployee(id: any, name: any, address: any, phone_number: any, email:any) {
     this.http.put(Constants.LOCALHOST + 'employee/' + id, {id: id, name: name, address: address, 
-      phone_number: phone_number, is_deleted: false}).subscribe((response: any) => {
+      phone_number: phone_number, email: email, is_deleted: false}).subscribe((response: any) => {
       if(response.error) {
         this.toastr.error(response.error, Constants.ERROR);
       } else {

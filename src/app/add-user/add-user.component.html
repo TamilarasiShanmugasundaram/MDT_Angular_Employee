@@ -1,7 +1,10 @@
 <div class="bg-img ">
   <div class="register">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <h1>Create a User</h1>
+      <div class="header">
+        <i  (click)="navigateToLogin()" class="material-icons">arrow_back</i>
+        <h1>Create a User</h1>
+      </div>
       <div class="input-field">
         <mat-form-field>
           <mat-label>FirstName</mat-label>
@@ -141,7 +144,6 @@
           </mat-form-field><br>       
         </div>
       <button mat-raised-button [disabled]="!f.valid" color="primary">Submit</button>
-      <button mat-raised-button (click)="navigateToLogin()" color="primary">Login</button>
     </form>
   </div>
 </div>

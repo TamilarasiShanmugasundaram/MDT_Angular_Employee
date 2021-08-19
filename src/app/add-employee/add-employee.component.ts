@@ -20,6 +20,7 @@ export class AddEmployeeComponent implements OnInit {
   name: string = '';
   address: string = '';
   phone_number: string = '';
+  email: string = '';
   id: any;
   employees: any;
   url:any = '';
@@ -60,10 +61,11 @@ export class AddEmployeeComponent implements OnInit {
     let name = form.controls[Constants.NAME].value;
     let address = form.controls[Constants.ADDRESS].value;
     let phone_number = form.controls[Constants.PHONENUMBER].value;
+    let email = form.controls[Constants.EMAIL].value;
     if(this.id) {
-      this.employee_service.updateEmployee(this.id, name, address, phone_number);
+      this.employee_service.updateEmployee(this.id, name, address, phone_number, email);
     } else {        
-      this.employee_service.addEmployee(name, address, phone_number);
+      this.employee_service.addEmployee(name, address, phone_number, email);
     }  
   }  
 
@@ -82,7 +84,15 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   /**
-   * Navigate to display employee page
+   * Navigate to create page
+   */
+   navigateToCreate() {
+    this.login_service.is_authenticate = true;
+    this.router.navigate(['/add']);
+  }
+
+  /**
+   * Navigate to display page
    */
   navigateToDisplay() {
     this.login_service.is_authenticate = true;

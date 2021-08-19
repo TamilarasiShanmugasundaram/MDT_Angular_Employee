@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,CAAC,EAAE,MAAM,CAAC;EACN,SAAS,EAAE,IAAI;CAClB",
     "sources": [
         "logout-dialog.component.scss"
     ],

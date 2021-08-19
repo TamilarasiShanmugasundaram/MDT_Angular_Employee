@@ -27,7 +27,7 @@ export class LoginServiceService {
         localStorage.setItem("token", this.token);
         this.router.navigate(['/add']);
       } else {
-        this.toastr.error(response.error, Constants.ERROR);
+        this.toastr.error(response.message, Constants.ERROR);
       }
     });
   }

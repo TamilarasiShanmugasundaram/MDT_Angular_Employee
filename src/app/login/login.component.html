@@ -1,15 +1,16 @@
 <div class="bg-img">
   <div class="login">
     <form #f="ngForm" (ngSubmit)="login(f)">
-      <h1>Login !!!</h1>
+      <h1>Login </h1>
+      <div class="form-div">
       <div class="input-field">
         <mat-form-field>
           <mat-label>Username </mat-label>
             <input type="text" matInput  name="username" required  
               [(ngModel)]="username" #Username="ngModel" minlength="3" ><br>
-            <button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+            <!-- <button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
               <mat-icon>close</mat-icon>
-            </button>
+            </button> -->
           <mat-error *ngIf="Username.invalid && (Username.dirty || Username.touched)">
             <mat-error *ngIf="Username.errors?.required">
               Username is required.
@@ -20,14 +21,14 @@
           </mat-error>
         </mat-form-field><br>
       </div>
-      <div class="input-field password" >   
+      <div class="input-field" >   
         <mat-form-field>
           <mat-label>Password </mat-label>
           <input type="password" matInput  name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
             [(ngModel)]="password" #Password="ngModel" minlength="5"><br>
-          <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
+          <!-- <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
             <mat-icon>close</mat-icon>
-          </button>
+          </button> -->
           <mat-error *ngIf="Password.invalid && (Password.dirty || Password.touched)">
             <mat-error *ngIf="Password.errors?.required">
               Password is required.
@@ -38,9 +39,12 @@
           </mat-error>
         </mat-form-field><br>
       </div>
-      <button mat-raised-button [disabled]="!f.valid" color="primary">Submit </button><br>
-      <span>Don't have an Account?</span>
-      <button mat-raised-button (click)="navigateToRegister()" color="primary">Signup </button> 
+      <div class="btn-div">
+        <button mat-raised-button [disabled]="!f.valid" color="primary">Submit </button><br>
+      </div>
+      <span>Don't have an Account? <a href="register" class="signup" >Signup </a> </span> 
+
+    </div>
     </form>
   </div>
 </div>

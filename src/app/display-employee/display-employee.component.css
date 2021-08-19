@@ -1,6 +1,6 @@
 .app-module {
   background-color: white;
-  height: 92vh;
+  height: 95.5%;
 }
 
 .app-module .sidenav {
@@ -12,22 +12,31 @@
 .app-module .side-nav-i {
   margin-left: 20px;
   color: white;
+  display: inline-block;
   font-size: 30px;
+  cursor: pointer;
 }
 
 .app-module .logout {
-  color: white;
-  font-size: 35px;
-  padding-left: 60px;
-  margin-top: 210%;
-}
-
-.app-module .sidenav a {
-  margin-left: 25px;
-  padding: 15px;
+  cursor: pointer;
+  margin-left: 15px;
   text-decoration: none;
   font-size: 23px;
+  margin-top: 770%;
+  color: #818181;
   display: inline-block;
+}
+
+.app-module .side-nav-a-div {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.app-module .side-nav-a {
+  cursor: pointer;
+  margin-left: 25px;
+  font-size: 23px;
+  text-decoration: none;
   color: #818181;
 }
 
@@ -36,7 +45,7 @@
 }
 
 .app-module .display table {
-  margin-left: 20%;
+  margin-left: 15%;
   border: 1px solid #ddd;
   margin-top: 2px;
 }
@@ -46,12 +55,12 @@
 }
 
 .app-module .display th, .app-module .display td {
-  width: 22%;
+  width: 18.5%;
+  font-size: 20px;
 }
 
 .app-module .display th {
   background-color: lightslategrey;
-  font-size: 15px;
   color: white;
 }
 

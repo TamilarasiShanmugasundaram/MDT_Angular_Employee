@@ -107,4 +107,12 @@ export class DisplayEmployeeComponent implements OnInit {
     this.login_service.is_authenticate = true;
     this.router.navigate(['/add']);
   }
+
+  /**
+   * Navigate to display page
+   */
+  navigateToDisplay() {
+    this.login_service.is_authenticate = true;
+    this.router.navigate(['/display']);
+  }
 }

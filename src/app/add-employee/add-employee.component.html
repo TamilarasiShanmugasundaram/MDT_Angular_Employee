@@ -1,10 +1,11 @@
 <mat-drawer-container class="app-module">
   <mat-drawer mode="side" opened class="sidenav"> 
-    <i class="material-icons">group_add</i>
-    <a href="add" >Create</a><br>
-    <i class="material-icons">playlist_add_circle</i>
-    <a href="display">List</a>  
-    <i (click)="navigateToLogout()" class="material-icons logout">power_settings_new</i>
+    <div class="side-nav-i"><i (click)="navigateToCreate()" class="material-icons "> group_add</i></div>
+    <div class="side-nav-a-div"><a (click)="navigateToCreate()"  class="side-nav-a" >Create</a></div><br>
+    <div class="side-nav-i"><i (click)="navigateToDisplay()" class="material-icons"> playlist_add_circle</i></div>
+    <div class="side-nav-a-div"><a (click)="navigateToDisplay()" class="side-nav-a">List</a> </div><br>
+    <div class="side-nav-i"><i (click)="navigateToLogout()" class="material-icons">power_settings_new</i></div>
+    <div class="side-nav-a-div"><a (click)="navigateToLogout()" class="logout">Logout</a></div>
   </mat-drawer>
   <mat-drawer-content>
     <div class="add">
@@ -69,6 +70,27 @@
               <mat-error *ngIf="Phone_number.errors?.pattern" >  
                 Phonenumber is not valid.  
               </mat-error> 
+            </mat-error>
+          </mat-form-field><br>
+        </div>
+        <div class="input-field">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput  name="email" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+              [(ngModel)]="email" #Email="ngModel" minlength="5" maxlength="150"><br>
+            <button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="Email.invalid && (Email.dirty || Email.touched)">
+              <mat-error *ngIf="Email.errors?.required">
+                Email is required.
+              </mat-error>
+              <mat-error *ngIf="Email.errors?.maxlength">
+                Cannot exists 150 characters
+              </mat-error>
+              <mat-error *ngIf="Email.errors?.pattern">
+                Email is not valid
+              </mat-error>
             </mat-error>
           </mat-form-field><br>
         </div>
