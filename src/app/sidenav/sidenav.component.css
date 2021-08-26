@@ -1,0 +1,35 @@
+.sidenav {
+  background-color: #565683;
+  height: 51.7rem;
+}
+
+.sidenav .side-nav-i {
+  padding-top: 10px;
+  margin-left: 20px;
+  color: white;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.sidenav .logout {
+  margin-top: 40rem;
+}
+
+.sidenav .side-nav-a-div {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.sidenav .side-nav-a {
+  cursor: pointer;
+  margin-left: 25px;
+  font-size: 23px;
+  text-decoration: none;
+  color: #9ca08a;
+}
+
+.sidenav .sidenav a:hover {
+  color: #f1f1f1;
+}
+/*# sourceMappingURL=sidenav.component.css.map */

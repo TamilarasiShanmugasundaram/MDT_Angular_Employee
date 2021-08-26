@@ -26,8 +26,7 @@ export class AddEmployeeComponent implements OnInit {
   url:any = '';
 
   constructor(private employee_service: EmployeeServiceService, private route: ActivatedRoute, 
-    private dialog: MatDialog, private router: Router, private toastr: ToastrService, 
-    private login_service: LoginServiceService ) { }
+    private dialog: MatDialog, private router: Router, private toastr: ToastrService) { }
 
   /**
    * Get a employee detail by id to update 
@@ -41,6 +40,7 @@ export class AddEmployeeComponent implements OnInit {
           this.name = data.name;
           this.address = data.address;
           this.phone_number = data.phone_number;
+          this.email = data.email;
         }, err => {  
           console.log(err);
           if(401 == err.status) {
@@ -69,33 +69,5 @@ export class AddEmployeeComponent implements OnInit {
     }  
   }  
 
-  /**
-   * Navigate to logout page
-   */
-   navigateToLogout() {
-    const dialogRef = this.dialog.open(LogoutDialogComponent,{
-      disableClose: true
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if(true == result) {
-        this.router.navigate(['/login']);
-      }
-    });
-  }
-
-  /**
-   * Navigate to create page
-   */
-   navigateToCreate() {
-    this.login_service.is_authenticate = true;
-    this.router.navigate(['/add']);
-  }
-
-  /**
-   * Navigate to display page
-   */
-  navigateToDisplay() {
-    this.login_service.is_authenticate = true;
-    this.router.navigate(['/display']);
-  }
+  
 }

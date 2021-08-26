@@ -1,14 +1,6 @@
-<mat-drawer-container class="app-module">
-  <mat-drawer mode="side" opened class="sidenav"> 
-    <div class="side-nav-i"><i (click)="navigateToCreate()" class="material-icons "> group_add</i></div>
-    <div class="side-nav-a-div"><a (click)="navigateToCreate()"  class="side-nav-a" >Create</a></div><br>
-    <div class="side-nav-i"><i (click)="navigateToDisplay()" class="material-icons"> playlist_add_circle</i></div>
-    <div class="side-nav-a-div"><a (click)="navigateToDisplay()" class="side-nav-a">List</a> </div><br>
-    <div class="side-nav-i"><i (click)="navigateToLogout()" class="material-icons">power_settings_new</i></div>
-    <div class="side-nav-a-div"><a (click)="navigateToLogout()" class="logout">Logout</a></div>
-  </mat-drawer>
-  <mat-drawer-content >
-    <div class="display"> 
+<!-- <div class="app-module">
+    <div class="display">  -->
+      <mat-card class="display">
       <table mat-table [dataSource]="employees" >
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -47,6 +39,6 @@
         [collectionSize]="total_count"  [(page)]="page" [boundaryLinks]="true">
         <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
       </ngb-pagination>
-    </div> 
-  </mat-drawer-content> 
-</mat-drawer-container>
+    <!-- </div> 
+</div> -->
+</mat-card>

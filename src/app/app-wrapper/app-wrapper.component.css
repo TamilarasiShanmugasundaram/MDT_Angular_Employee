@@ -1,0 +1,15 @@
+.app-module {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 100%;
+}
+
+.app-module .sidenav {
+  display: inline-block;
+}
+
+.app-module .right {
+  display: inline-block;
+}
+/*# sourceMappingURL=app-wrapper.component.css.map */

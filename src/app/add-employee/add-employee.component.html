@@ -1,14 +1,6 @@
-<mat-drawer-container class="app-module">
-  <mat-drawer mode="side" opened class="sidenav"> 
-    <div class="side-nav-i"><i (click)="navigateToCreate()" class="material-icons "> group_add</i></div>
-    <div class="side-nav-a-div"><a (click)="navigateToCreate()"  class="side-nav-a" >Create</a></div><br>
-    <div class="side-nav-i"><i (click)="navigateToDisplay()" class="material-icons"> playlist_add_circle</i></div>
-    <div class="side-nav-a-div"><a (click)="navigateToDisplay()" class="side-nav-a">List</a> </div><br>
-    <div class="side-nav-i"><i (click)="navigateToLogout()" class="material-icons">power_settings_new</i></div>
-    <div class="side-nav-a-div"><a (click)="navigateToLogout()" class="logout">Logout</a></div>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div class="add">
+<!-- <div class="app-module">
+    <div class="add">  -->
+      <mat-card class="add">
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <h1  *ngIf = "url == '/add' || url == '/'">Create a employee</h1>
         <h1 *ngIf = "url != '/add' && url != '/'">Update a employee</h1>
@@ -97,8 +89,6 @@
         <button mat-raised-button *ngIf = "url == '/add'" [disabled]="!f.valid" color="primary">Submit</button>
         <button mat-raised-button *ngIf = "url != '/add'" [disabled]="!(f.valid) || (!f.dirty)"   color="primary">Submit</button>
       </form>
-    </div>  
-  </mat-drawer-content> 
-</mat-drawer-container>
-
-
+      </mat-card>
+    <!-- </div> 
+</div> -->

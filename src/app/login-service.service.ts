@@ -24,6 +24,7 @@ export class LoginServiceService {
       if(response.token) {
         this.is_authenticate = true;
         this.token = response.token;
+        console.log(this.is_authenticate);
         localStorage.setItem("token", this.token);
         this.router.navigate(['/add']);
       } else {

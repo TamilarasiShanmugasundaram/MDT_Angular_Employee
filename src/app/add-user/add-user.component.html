@@ -1,10 +1,11 @@
-<div class="bg-img ">
+<div class="bg-img" >
   <div class="register">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="header">
         <i  (click)="navigateToLogin()" class="material-icons">arrow_back</i>
         <h1>Create a User</h1>
       </div>
+      <div class="register-form">
       <div class="input-field">
         <mat-form-field>
           <mat-label>FirstName</mat-label>
@@ -141,9 +142,11 @@
                 Atleast 1 uppercase, lowercase, number and 5 character long
               </mat-error>
             </mat-error>
-          </mat-form-field><br>       
-        </div>
+          </mat-form-field><br> 
+        </div>      
+<div>
       <button mat-raised-button [disabled]="!f.valid" color="primary">Submit</button>
-    </form>
+    </div>
+
   </div>
 </div>

@@ -1,12 +1,12 @@
 .bg-img {
   background-image: url("/assets/images/plain.jpg");
-  height: 93.9%;
+  height: 51.7rem;
   background-repeat: no-repeat;
   background-size: 100%;
 }
 
 .bg-img .register {
-  padding-top: 1%;
+  padding-top: 2%;
 }
 
 .bg-img .register form {
@@ -27,42 +27,46 @@
 .bg-img .register form .header h1 {
   font-family: sans-serif;
   font-size: 30px;
+  margin-left: 10%;
   display: inline-block;
 }
 
 .bg-img .register form .header i {
   cursor: pointer;
   font-size: 25px;
-  padding-right: 22%;
   display: inline-block;
 }
 
-.bg-img .register form input {
+.bg-img .register form .register-form {
+  padding-top: 10px;
+}
+
+.bg-img .register form .register-form input {
   height: 3vh;
 }
 
-.bg-img .register form .input-field {
+.bg-img .register form .register-form .input-field {
   margin-left: 50px;
   margin-right: 50px;
 }
 
-.bg-img .register form .input-field mat-form-field {
+.bg-img .register form .register-form .input-field mat-form-field {
   font-size: 20px;
   width: 100%;
 }
 
-.bg-img .register form span {
+.bg-img .register form .register-form span {
   margin-left: 50px;
   font-size: 15px;
 }
 
-.bg-img .register form a {
+.bg-img .register form .register-form a {
   font-size: 15px;
   margin-left: 10px;
   text-decoration: none;
 }
 
-.bg-img .register form button {
+.bg-img .register form .register-form button {
   margin-left: 38%;
   margin-top: 25px;
   font-size: 18px;
@@ -71,67 +75,65 @@
 @media only screen and (min-width: 1024px) {
   .bg-img {
     background-size: 150%;
-    height: 95.5%;
   }
   .bg-img .register form {
-    height: 47rem;
+    width: 34%;
+    height: 46rem;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .bg-img {
-    background-size: 210%;
-    height: 94.9%;
+    background-size: 360%;
+    height: 98rem;
   }
-  .bg-img .login form {
-    height: 21rem;
-    width: 35%;
+  .bg-img .register form {
+    height: 49.5rem;
+    width: 70%;
   }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 767px) {
   .bg-img {
-    background-size: 210%;
-    height: 95%;
+    background-size: 360%;
+    height: 99rem;
   }
-  .bg-img .login form {
-    width: 42%;
+  .bg-img .register form {
+    width: 65%;
+    height: 47rem;
   }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 599px) {
   .bg-img {
-    background-size: 390%;
-    height: 96%;
+    background-size: 3200%;
+    height: 450rem;
   }
-  .bg-img .login form {
+  .bg-img .register form {
     width: 80%;
+    height: 47rem;
   }
 }
 
 @media only screen and (max-width: 320px) {
   .bg-img {
-    background-size: 380%;
-    height: 95%;
+    background-size: 920%;
+    height: 99rem;
   }
-  .bg-img .login form {
+  .bg-img .register form {
     width: 79%;
+    height: 47rem;
   }
-  .bg-img .login form .input-field {
+  .bg-img .register form .register-form .input-field {
     margin-left: 30px;
     margin-right: 30px;
   }
-  .bg-img .login form span {
-    margin-left: 20px;
-    font-size: 8px;
-  }
-  .bg-img .login form a {
-    font-size: 8px;
-    margin-left: 10px;
-  }
-  .bg-img .login form button {
-    margin-left: 20px;
+  .bg-img .register form .header h1 {
+    font-family: sans-serif;
+    font-size: 20px;
+    margin-left: 10%;
+    display: inline-block;
   }
 }
 /*# sourceMappingURL=add-user.component.css.map */
